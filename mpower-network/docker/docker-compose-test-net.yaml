@@ -1,0 +1,658 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: '2.4'
+
+volumes:
+  orderer.mpower.in:
+  peer0.mulmundra.mpower.in:
+  peer0.aemlmumbai.mpower.in:
+  peer0.jvvnljaipur.mpower.in:
+  peer0.aprlkawai.mpower.in:
+  peer0.apmltiroda.mpower.in:
+  peer0.apmlmundra.mpower.in:
+  peer0.getco.mpower.in:
+  peer0.rrvpnl.mpower.in:
+  peer0.pgcil.mpower.in:
+  peer0.msetcl.mpower.in:
+  peer0.gujaratsldc.mpower.in:
+  peer0.maharastrasldc.mpower.in:
+  peer0.rajasthansldc.mpower.in:
+  peer0.westernrldc.mpower.in:
+  peer0.northernrldc.mpower.in:
+
+networks:
+  mpower_network:
+
+services:
+
+  orderer.mpower.in:
+    container_name: orderer.mpower.in
+    image: hyperledger/fabric-orderer:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      - FABRIC_LOGGING_SPEC=INFO
+      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+      - ORDERER_GENERAL_LISTENPORT=7050
+      - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+      - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+      # enabled TLS
+      - ORDERER_GENERAL_TLS_ENABLED=true
+      - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+      - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+      - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      - ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR=1
+      - ORDERER_KAFKA_VERBOSE=true
+      - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+      - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+      - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      - ORDERER_GENERAL_BOOTSTRAPMETHOD=none
+      - ORDERER_CHANNELPARTICIPATION_ENABLED=true
+      - ORDERER_ADMIN_TLS_ENABLED=true
+      - ORDERER_ADMIN_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+      - ORDERER_ADMIN_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+      - ORDERER_ADMIN_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      - ORDERER_ADMIN_TLS_CLIENTROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      - ORDERER_ADMIN_LISTENADDRESS=0.0.0.0:7053
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+    command: orderer
+    volumes:
+        - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+        - ../organizations/ordererOrganizations/mpower.in/orderers/orderer.mpower.in/msp:/var/hyperledger/orderer/msp
+        - ../organizations/ordererOrganizations/mpower.in/orderers/orderer.mpower.in/tls/:/var/hyperledger/orderer/tls
+        - orderer.mpower.in:/var/hyperledger/production/orderer
+    ports:
+      - 7050:7050
+      - 7053:7053
+    networks:
+      - mpower_network
+
+  peer0.mulmundra.mpower.in:
+    container_name: peer0.mulmundra.mpower.in
+    image: hyperledger/fabric-peer:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=fabric_test
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=false
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.mulmundra.mpower.in
+      - CORE_PEER_ADDRESS=peer0.mulmundra.mpower.in:7051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.mulmundra.mpower.in:7052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.mulmundra.mpower.in:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.mulmundra.mpower.in:7051
+      - CORE_PEER_LOCALMSPID=MULMUNDRAMSP
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../organizations/peerOrganizations/mulmundra.mpower.in/peers/peer0.mulmundra.mpower.in/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/mulmundra.mpower.in/peers/peer0.mulmundra.mpower.in/tls:/etc/hyperledger/fabric/tls
+        - peer0.mulmundra.mpower.in:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 7051:7051
+    networks:
+      - mpower_network
+
+  peer0.aemlmumbaimumbai.mpower.in:
+    container_name: peer0.aemlmumbai.mpower.in
+    image: hyperledger/fabric-peer:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=fabric_test
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=false
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.aemlmumbai.mpower.in
+      - CORE_PEER_ADDRESS=peer0.aemlmumbai.mpower.in:9051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:9051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.aemlmumbai.mpower.in:9052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.aemlmumbai.mpower.in:9051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.aemlmumbai.mpower.in:9051
+      - CORE_PEER_LOCALMSPID=AEMLMUMBAIMSP
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../organizations/peerOrganizations/aemlmumbai.mpower.in/peers/peer0.aemlmumbai.mpower.in/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/aemlmumbai.mpower.in/peers/peer0.aemlmumbai.mpower.in/tls:/etc/hyperledger/fabric/tls
+        - peer0.aemlmumbai.mpower.in:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 9051:9051
+    networks:
+      - mpower_network
+  
+  peer0.jvvnljaipur.mpower.in:
+    container_name: peer0.jvvnljaipur.mpower.in
+    image: hyperledger/fabric-peer:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=fabric_test
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=false
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.jvvnljaipur.mpower.in
+      - CORE_PEER_ADDRESS=peer0.jvvnljaipur.mpower.in:10051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:10051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.jvvnljaipur.mpower.in:10052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:10052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.jvvnljaipur.mpower.in:10051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.jvvnljaipur.mpower.in:10051
+      - CORE_PEER_LOCALMSPID=JVVNLMSP
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../organizations/peerOrganizations/jvvnljaipur.mpower.in/peers/peer0.jvvnljaipur.mpower.in/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/jvvnljaipur.mpower.in/peers/peer0.jvvnljaipur.mpower.in/tls:/etc/hyperledger/fabric/tls
+        - peer0.jvvnljaipur.mpower.in:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 10051:10051
+    networks:
+      - mpower_network
+
+  peer0.aprlkawai.mpower.in:
+    container_name: peer0.aprlkawai.mpower.in
+    image: hyperledger/fabric-peer:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=fabric_test
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=false
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.aprlkawai.mpower.in
+      - CORE_PEER_ADDRESS=peer0.aprlkawai.mpower.in:11051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:11051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.aprlkawai.mpower.in:11052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:11052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.aprlkawai.mpower.in:11051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.aprlkawai.mpower.in:11051
+      - CORE_PEER_LOCALMSPID=APRLKAWAIMSP
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../organizations/peerOrganizations/aprlkawai.mpower.in/peers/peer0.aprlkawai.mpower.in/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/aprlkawai.mpower.in/peers/peer0.aprlkawai.mpower.in/tls:/etc/hyperledger/fabric/tls
+        - peer0.aprlkawai.mpower.in:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 11051:11051
+    networks:
+      - mpower_network
+
+  peer0.apmltiroda.mpower.in:
+    container_name: peer0.apmltiroda.mpower.in
+    image: hyperledger/fabric-peer:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=fabric_test
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=false
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.apmltiroda.mpower.in
+      - CORE_PEER_ADDRESS=peer0.apmltiroda.mpower.in:12051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:12051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.apmltiroda.mpower.in:12052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:12052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.apmltiroda.mpower.in:12051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.apmltiroda.mpower.in:12051
+      - CORE_PEER_LOCALMSPID=APMLTIRODAMSP
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/tls:/etc/hyperledger/fabric/tls
+        - peer0.apmltiroda.mpower.in:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 12051:12051
+    networks:
+      - mpower_network
+
+  peer0.apmlmundra.mpower.in:
+    container_name: peer0.apmlmundra.mpower.in
+    image: hyperledger/fabric-peer:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=fabric_test
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=false
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.apmlmundra.mpower.in
+      - CORE_PEER_ADDRESS=peer0.apmlmundra.mpower.in:13051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:13051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.apmlmundra.mpower.in:13052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:13052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.apmlmundra.mpower.in:13051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.apmlmundra.mpower.in:13051
+      - CORE_PEER_LOCALMSPID=APMLMUNDRAMSP
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../organizations/peerOrganizations/apmlmundra.mpower.in/peers/peer0.apmlmundra.mpower.in/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/apmlmundra.mpower.in/peers/peer0.apmlmundra.mpower.in/tls:/etc/hyperledger/fabric/tls
+        - peer0.apmlmundra.mpower.in:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 13051:13051
+    networks:
+      - mpower_network
+
+  peer0.getco.mpower.in:
+    container_name: peer0.getco.mpower.in
+    image: hyperledger/fabric-peer:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=fabric_test
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=false
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.getco.mpower.in
+      - CORE_PEER_ADDRESS=peer0.getco.mpower.in:14051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:14051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.getco.mpower.in:14052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:14052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.getco.mpower.in:14051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.getco.mpower.in:14051
+      - CORE_PEER_LOCALMSPID=GETCOMSP
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../organizations/peerOrganizations/getco.mpower.in/peers/peer0.getco.mpower.in/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/getco.mpower.in/peers/peer0.getco.mpower.in/tls:/etc/hyperledger/fabric/tls
+        - peer0.getco.mpower.in:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 14051:14051
+    networks:
+      - mpower_network
+
+  peer0.msetcl.mpower.in:
+    container_name: peer0.msetcl.mpower.in
+    image: hyperledger/fabric-peer:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=fabric_test
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=false
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.msetcl.mpower.in
+      - CORE_PEER_ADDRESS=peer0.msetcl.mpower.in:17051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:17051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.msetcl.mpower.in:17052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:17052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.msetcl.mpower.in:17051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.msetcl.mpower.in:17051
+      - CORE_PEER_LOCALMSPID=MSETCLMSP
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../organizations/peerOrganizations/msetcl.mpower.in/peers/peer0.msetcl.mpower.in/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/msetcl.mpower.in/peers/peer0.msetcl.mpower.in/tls:/etc/hyperledger/fabric/tls
+        - peer0.msetcl.mpower.in:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 17051:17051
+    networks:
+      - mpower_network
+
+  peer0.rrvpnl.mpower.in:
+    container_name: peer0.rrvpnl.mpower.in
+    image: hyperledger/fabric-peer:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=fabric_test
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=false
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.rrvpnl.mpower.in
+      - CORE_PEER_ADDRESS=peer0.rrvpnl.mpower.in:15051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:15051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.rrvpnl.mpower.in:15052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:15052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.rrvpnl.mpower.in:15051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.rrvpnl.mpower.in:15051
+      - CORE_PEER_LOCALMSPID=RRVPNLMSP
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../organizations/peerOrganizations/rrvpnl.mpower.in/peers/peer0.rrvpnl.mpower.in/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/rrvpnl.mpower.in/peers/peer0.rrvpnl.mpower.in/tls:/etc/hyperledger/fabric/tls
+        - peer0.rrvpnl.mpower.in:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 15051:15051
+    networks:
+      - mpower_network
+
+  peer0.pgcil.mpower.in:
+    container_name: peer0.pgcil.mpower.in
+    image: hyperledger/fabric-peer:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=fabric_test
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=false
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.pgcil.mpower.in
+      - CORE_PEER_ADDRESS=peer0.pgcil.mpower.in:16051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:16051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.pgcil.mpower.in:16052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:16052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.pgcil.mpower.in:16051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.pgcil.mpower.in:16051
+      - CORE_PEER_LOCALMSPID=PGCILMSP
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../organizations/peerOrganizations/pgcil.mpower.in/peers/peer0.pgcil.mpower.in/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/pgcil.mpower.in/peers/peer0.pgcil.mpower.in/tls:/etc/hyperledger/fabric/tls
+        - peer0.pgcil.mpower.in:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 16051:16051
+    networks:
+      - mpower_network
+
+  peer0.gujaratsldc.mpower.in:
+    container_name: peer0.gujaratsldc.mpower.in
+    image: hyperledger/fabric-peer:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=fabric_test
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=false
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.gujaratsldc.mpower.in
+      - CORE_PEER_ADDRESS=peer0.gujaratsldc.mpower.in:18051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:18051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.gujaratsldc.mpower.in:18052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:18052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.gujaratsldc.mpower.in:18051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.gujaratsldc.mpower.in:18051
+      - CORE_PEER_LOCALMSPID=GUJSLDCMSP
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../organizations/peerOrganizations/gujaratsldc.mpower.in/peers/peer0.gujaratsldc.mpower.in/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/gujaratsldc.mpower.in/peers/peer0.gujaratsldc.mpower.in/tls:/etc/hyperledger/fabric/tls
+        - peer0.gujaratsldc.mpower.in:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 18051:18051
+    networks:
+      - mpower_network
+  
+  peer0.maharastrasldc.mpower.in:
+    container_name: peer0.maharastrasldc.mpower.in
+    image: hyperledger/fabric-peer:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=fabric_test
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=false
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.maharastrasldc.mpower.in
+      - CORE_PEER_ADDRESS=peer0.maharastrasldc.mpower.in:19051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:19051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.maharastrasldc.mpower.in:19052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:19052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.maharastrasldc.mpower.in:19051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.maharastrasldc.mpower.in:19051
+      - CORE_PEER_LOCALMSPID=MAHASLDCMSP
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../organizations/peerOrganizations/maharastrasldc.mpower.in/peers/peer0.maharastrasldc.mpower.in/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/maharastrasldc.mpower.in/peers/peer0.maharastrasldc.mpower.in/tls:/etc/hyperledger/fabric/tls
+        - peer0.maharastrasldc.mpower.in:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 19051:19051
+    networks:
+      - mpower_network
+
+  peer0.rajasthansldc.mpower.in:
+    container_name: peer0.rajasthansldc.mpower.in
+    image: hyperledger/fabric-peer:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=fabric_test
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=false
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.rajasthansldc.mpower.in
+      - CORE_PEER_ADDRESS=peer0.rajasthansldc.mpower.in:20051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:20051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.rajasthansldc.mpower.in:20052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:20052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.rajasthansldc.mpower.in:20051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.rajasthansldc.mpower.in:20051
+      - CORE_PEER_LOCALMSPID=RAJSLDCMSP
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../organizations/peerOrganizations/rajasthansldc.mpower.in/peers/peer0.rajasthansldc.mpower.in/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/rajasthansldc.mpower.in/peers/peer0.rajasthansldc.mpower.in/tls:/etc/hyperledger/fabric/tls
+        - peer0.rajasthansldc.mpower.in:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 20051:20051
+    networks:
+      - mpower_network
+
+  peer0.westernrldc.mpower.in:
+    container_name: peer0.westernrldc.mpower.in
+    image: hyperledger/fabric-peer:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=fabric_test
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=false
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.westernrldc.mpower.in
+      - CORE_PEER_ADDRESS=peer0.westernrldc.mpower.in:21051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:21051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.westernrldc.mpower.in:21052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:21052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.westernrldc.mpower.in:21051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.westernrldc.mpower.in:21051
+      - CORE_PEER_LOCALMSPID=WESTRLDCMSP
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../organizations/peerOrganizations/westernrldc.mpower.in/peers/peer0.westernrldc.mpower.in/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/westernrldc.mpower.in/peers/peer0.westernrldc.mpower.in/tls:/etc/hyperledger/fabric/tls
+        - peer0.westernrldc.mpower.in:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 21051:21051
+    networks:
+      - mpower_network
+
+  peer0.northernrldc.mpower.in:
+    container_name: peer0.northernrldc.mpower.in
+    image: hyperledger/fabric-peer:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=fabric_test
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=false
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.northernrldc.mpower.in
+      - CORE_PEER_ADDRESS=peer0.northernrldc.mpower.in:22051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:22051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.northernrldc.mpower.in:22052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:22052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.northernrldc.mpower.in:22051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.northernrldc.mpower.in:22051
+      - CORE_PEER_LOCALMSPID=NORTHRLDCMSP
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../organizations/peerOrganizations/northernrldc.mpower.in/peers/peer0.northernrldc.mpower.in/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/northernrldc.mpower.in/peers/peer0.northernrldc.mpower.in/tls:/etc/hyperledger/fabric/tls
+        - peer0.northernrldc.mpower.in:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 22051:22051
+    networks:
+      - mpower_network
+  
+  cli:
+      container_name: cli
+      image: hyperledger/fabric-tools:latest
+      labels:
+        service: hyperledger-fabric
+      tty: true
+      stdin_open: true
+      environment:
+        - GOPATH=/opt/gopath
+        - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+        - FABRIC_LOGGING_SPEC=INFO
+        #- FABRIC_LOGGING_SPEC=DEBUG
+      working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+      command: /bin/bash
+      volumes:
+          - /var/run/:/host/var/run/
+          - ../organizations:/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations
+          - ../scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
+      depends_on:
+        - peer0.mulmundra.mpower.in
+        - peer0.aemlmumbai.mpower.in
+        - peer0.jvvnljaipur.mpower.in
+        - peer0.aprlkawai.mpower.in
+        - peer0.apmlmundra.mpower.in
+        - peer0.apmltiroda.mpower.in
+        - peer0.getco.mpower.in
+        - peer0.rrvpnl.mpower.in
+        - peer0.pgcil.mpower.in
+        - peer0.msetcl.mpower.in
+      networks:
+        - mpower_network
