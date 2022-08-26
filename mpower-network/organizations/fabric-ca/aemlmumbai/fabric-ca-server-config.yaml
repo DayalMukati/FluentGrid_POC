@@ -239,7 +239,7 @@ ldap:
 affiliations:
    mul:
       - department1
-   aeml:
+   aemlmumbai:
       - department1
    getco:
       - department1
@@ -316,16 +316,16 @@ signing:
 #     CA certificates though it can still issue end entity certificates.
 ###########################################################################
 csr:
-   cn: ca.adanimundra.mpower.in
+   cn: ca.aemlmumbai.mpower.in
    names:
       - C: UK
         ST: "Hampshire"
         L: "Hursley"
-        O: adanimundra.mpower.in
+        O: aemlmumbai.mpower.in
         OU:
    hosts:
      - localhost
-     - adanimundra.mpower.in
+     - aemlmumbai.mpower.in
    ca:
       expiry: 131400h
       pathlength: 1

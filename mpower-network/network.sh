@@ -148,7 +148,7 @@ function createOrgs() {
     # infoln "Creating Org2 Identities"
 
     # set -x
-    # cryptogen generate --config=./organizations/cryptogen/crypto-config-aeml.yaml --output="organizations"
+    # cryptogen generate --config=./organizations/cryptogen/crypto-config-aemlmumbai.yaml --output="organizations"
     # res=$?
     # { set +x; } 2>/dev/null
     # if [ $res -ne 0 ]; then
@@ -176,7 +176,7 @@ function createOrgs() {
 
   while :
     do
-      if [ ! -f "organizations/fabric-ca/mul/tls-cert.pem" ]; then
+      if [ ! -f "organizations/fabric-ca/mulmundra/tls-cert.pem" ]; then
         sleep 1
       else
         break
@@ -185,16 +185,22 @@ function createOrgs() {
 
     infoln "Creating Identities"
 
-    createMul
-    createAeml
+    createMulmundra
+    createAemlmumbai
     createGetco
-    createAdaniBitta
-    createAdaniKawai
-    createAdaniMundra
-    createAdaniTiroda
     createMsetcl
     createPgcil
     createRrvpnl
+    createApmlTiroda
+    createAprlKawai
+    createApmlMundra
+    createGujaratSldc
+    createJvvnlJaipur
+    createMaharastraSldc
+    createNorthernRldc
+    createRajasthanSldc
+    createWesternRldc
+    
 
     infoln "Creating Orderer Org Identities"
 
@@ -239,13 +245,13 @@ function networkUp() {
   if [ ! -d "organizations/peerOrganizations" ]; then
     createOrgs
   fi
-
+  sleep 1
   COMPOSE_FILES="-f ${COMPOSE_FILE_BASE}"
 
   if [ "${DATABASE}" == "couchdb" ]; then
     COMPOSE_FILES="${COMPOSE_FILES} -f ${COMPOSE_FILE_COUCH}"
   fi
-
+  sleep 1
   docker-compose ${COMPOSE_FILES} up -d 2>&1
 
   docker ps -a
@@ -266,7 +272,7 @@ function createChannel() {
 
   # now run the script that creates a channel. This script uses configtxgen once
   # to create the channel creation transaction and the anchor peer updates.
-  scripts/createChannel.sh $CHANNEL_NAME $CLI_DELAY $MAX_RETRY $VERBOSE
+  scripts/createChannel.sh $CHANNEL_NAME $CLI_DELAY $MAX_RETRY $VERBOSE $PROFILE
 }
 
 
@@ -295,16 +301,21 @@ function networkDown() {
     # remove orderer block and other channel configuration transactions and certs
     docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf system-genesis-block/*.block organizations/peerOrganizations organizations/ordererOrganizations'
     ## remove fabric ca artifacts
-    docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/mul/msp organizations/fabric-ca/mul/tls-cert.pem organizations/fabric-ca/mul/ca-cert.pem organizations/fabric-ca/mul/IssuerPublicKey organizations/fabric-ca/mul/IssuerRevocationPublicKey organizations/fabric-ca/mul/fabric-ca-server.db'
-    docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/aeml/msp organizations/fabric-ca/aeml/tls-cert.pem organizations/fabric-ca/aeml/ca-cert.pem organizations/fabric-ca/aeml/IssuerPublicKey organizations/fabric-ca/aeml/IssuerRevocationPublicKey organizations/fabric-ca/aeml/fabric-ca-server.db'
+    docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/mulmundra/msp organizations/fabric-ca/mulmundra/tls-cert.pem organizations/fabric-ca/mulmundra/ca-cert.pem organizations/fabric-ca/mulmundra/IssuerPublicKey organizations/fabric-ca/mulmundra/IssuerRevocationPublicKey organizations/fabric-ca/mulmundra/fabric-ca-server.db'
+    docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/aemlmumbai/msp organizations/fabric-ca/aemlmumbai/tls-cert.pem organizations/fabric-ca/aemlmumbai/ca-cert.pem organizations/fabric-ca/aemlmumbai/IssuerPublicKey organizations/fabric-ca/aemlmumbai/IssuerRevocationPublicKey organizations/fabric-ca/aemlmumbai/fabric-ca-server.db'
     docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/getco/msp organizations/fabric-ca/getco/tls-cert.pem organizations/fabric-ca/getco/ca-cert.pem organizations/fabric-ca/getco/IssuerPublicKey organizations/fabric-ca/getco/IssuerRevocationPublicKey organizations/fabric-ca/getco/fabric-ca-server.db'
     docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/msetcl/msp organizations/fabric-ca/msetcl/tls-cert.pem organizations/fabric-ca/msetcl/ca-cert.pem organizations/fabric-ca/msetcl/IssuerPublicKey organizations/fabric-ca/msetcl/IssuerRevocationPublicKey organizations/fabric-ca/msetcl/fabric-ca-server.db'
     docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/pgcil/msp organizations/fabric-ca/pgcil/tls-cert.pem organizations/fabric-ca/pgcil/ca-cert.pem organizations/fabric-ca/pgcil/IssuerPublicKey organizations/fabric-ca/pgcil/IssuerRevocationPublicKey organizations/fabric-ca/pgcil/fabric-ca-server.db'
     docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/rrvpnl/msp organizations/fabric-ca/rrvpnl/tls-cert.pem organizations/fabric-ca/rrvpnl/ca-cert.pem organizations/fabric-ca/rrvpnl/IssuerPublicKey organizations/fabric-ca/rrvpnl/IssuerRevocationPublicKey organizations/fabric-ca/rrvpnl/fabric-ca-server.db'
-    docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/adanibitta/msp organizations/fabric-ca/adanibitta/tls-cert.pem organizations/fabric-ca/adanibitta/ca-cert.pem organizations/fabric-ca/adanibitta/IssuerPublicKey organizations/fabric-ca/adanibitta/IssuerRevocationPublicKey organizations/fabric-ca/adanibitta/fabric-ca-server.db'
-    docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/adanikawai/msp organizations/fabric-ca/adanikawai/tls-cert.pem organizations/fabric-ca/adanikawai/ca-cert.pem organizations/fabric-ca/adanikawai/IssuerPublicKey organizations/fabric-ca/adanikawai/IssuerRevocationPublicKey organizations/fabric-ca/adanikawai/fabric-ca-server.db'
-    docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/adanimundra/msp organizations/fabric-ca/adanimundra/tls-cert.pem organizations/fabric-ca/adanimundra/ca-cert.pem organizations/fabric-ca/adanimundra/IssuerPublicKey organizations/fabric-ca/adanimundra/IssuerRevocationPublicKey organizations/fabric-ca/adanimundra/fabric-ca-server.db'
-    docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/adanitiroda/msp organizations/fabric-ca/adanitiroda/tls-cert.pem organizations/fabric-ca/adanitiroda/ca-cert.pem organizations/fabric-ca/adanitiroda/IssuerPublicKey organizations/fabric-ca/adanitiroda/IssuerRevocationPublicKey organizations/fabric-ca/adanitiroda/fabric-ca-server.db'
+    docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/jvvnljaipur/msp organizations/fabric-ca/jvvnljaipur/tls-cert.pem organizations/fabric-ca/jvvnljaipur/ca-cert.pem organizations/fabric-ca/jvvnljaipur/IssuerPublicKey organizations/fabric-ca/jvvnljaipur/IssuerRevocationPublicKey organizations/fabric-ca/jvvnljaipur/fabric-ca-server.db'
+    docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/aprlkawai/msp organizations/fabric-ca/aprlkawai/tls-cert.pem organizations/fabric-ca/aprlkawai/ca-cert.pem organizations/fabric-ca/aprlkawai/IssuerPublicKey organizations/fabric-ca/aprlkawai/IssuerRevocationPublicKey organizations/fabric-ca/aprlkawai/fabric-ca-server.db'
+    docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/apmlmundra/msp organizations/fabric-ca/apmlmundra/tls-cert.pem organizations/fabric-ca/apmlmundra/ca-cert.pem organizations/fabric-ca/apmlmundra/IssuerPublicKey organizations/fabric-ca/apmlmundra/IssuerRevocationPublicKey organizations/fabric-ca/apmlmundra/fabric-ca-server.db'
+    docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/gujaratsldc/msp organizations/fabric-ca/gujaratsldc/tls-cert.pem organizations/fabric-ca/gujaratsldc/ca-cert.pem organizations/fabric-ca/gujaratsldc/IssuerPublicKey organizations/fabric-ca/gujaratsldc/IssuerRevocationPublicKey organizations/fabric-ca/gujaratsldc/fabric-ca-server.db'
+    docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/apmltiroda/msp organizations/fabric-ca/apmltiroda/tls-cert.pem organizations/fabric-ca/apmltiroda/ca-cert.pem organizations/fabric-ca/apmltiroda/IssuerPublicKey organizations/fabric-ca/apmltiroda/IssuerRevocationPublicKey organizations/fabric-ca/apmltiroda/fabric-ca-server.db'
+    docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/maharastrasldc/msp organizations/fabric-ca/maharastrasldc/tls-cert.pem organizations/fabric-ca/maharastrasldc/ca-cert.pem organizations/fabric-ca/maharastrasldc/IssuerPublicKey organizations/fabric-ca/maharastrasldc/IssuerRevocationPublicKey organizations/fabric-ca/maharastrasldc/fabric-ca-server.db'
+    docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/rajasthansldc/msp organizations/fabric-ca/rajasthansldc/tls-cert.pem organizations/fabric-ca/rajasthansldc/ca-cert.pem organizations/fabric-ca/rajasthansldc/IssuerPublicKey organizations/fabric-ca/rajasthansldc/IssuerRevocationPublicKey organizations/fabric-ca/rajasthansldc/fabric-ca-server.db'
+    docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/westernrldc/msp organizations/fabric-ca/westernrldc/tls-cert.pem organizations/fabric-ca/westernrldc/ca-cert.pem organizations/fabric-ca/westernrldc/IssuerPublicKey organizations/fabric-ca/westernrldc/IssuerRevocationPublicKey organizations/fabric-ca/westernrldc/fabric-ca-server.db'
+    docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/northernrldc/msp organizations/fabric-ca/northernrldc/tls-cert.pem organizations/fabric-ca/northernrldc/ca-cert.pem organizations/fabric-ca/northernrldc/IssuerPublicKey organizations/fabric-ca/northernrldc/IssuerRevocationPublicKey organizations/fabric-ca/northernrldc/fabric-ca-server.db'
     docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/ordererOrg/msp organizations/fabric-ca/ordererOrg/tls-cert.pem organizations/fabric-ca/ordererOrg/ca-cert.pem organizations/fabric-ca/ordererOrg/IssuerPublicKey organizations/fabric-ca/ordererOrg/IssuerRevocationPublicKey organizations/fabric-ca/ordererOrg/fabric-ca-server.db'
     docker run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf addOrg3/fabric-ca/org3/msp addOrg3/fabric-ca/org3/tls-cert.pem addOrg3/fabric-ca/org3/ca-cert.pem addOrg3/fabric-ca/org3/IssuerPublicKey addOrg3/fabric-ca/org3/IssuerRevocationPublicKey addOrg3/fabric-ca/org3/fabric-ca-server.db'
     # remove channel and script artifacts
@@ -321,6 +332,7 @@ MAX_RETRY=5
 CLI_DELAY=3
 # channel name defaults to "mychannel"
 CHANNEL_NAME="mychannel"
+PROFILE="NA"
 # chaincode name defaults to "NA"
 CC_NAME="NA"
 # chaincode path defaults to "NA"
@@ -382,6 +394,10 @@ while [[ $# -ge 1 ]] ; do
     ;;
   -c )
     CHANNEL_NAME="$2"
+    shift
+    ;;
+  -pp )
+    PROFILE="$2"
     shift
     ;;
   -ca )

@@ -107,7 +107,7 @@ services:
     networks:
       - mpower_network
 
-  peer0.aemlmumbaimumbai.mpower.in:
+  peer0.aemlmumbai.mpower.in:
     container_name: peer0.aemlmumbai.mpower.in
     image: hyperledger/fabric-peer:latest
     labels:

@@ -10,165 +10,111 @@ networks:
 
 services:
 
-  ca_mul:
+  ca_mulmundra:
     image: hyperledger/fabric-ca:latest
     labels:
       service: hyperledger-fabric
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-mul
+      - FABRIC_CA_SERVER_CA_NAME=ca-mulmundra
       - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_PORT=7054
     ports:
       - "7054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
     volumes:
-      - ../organizations/fabric-ca/mul:/etc/hyperledger/fabric-ca-server
-    container_name: ca_mul
+      - ../organizations/fabric-ca/mulmundra:/etc/hyperledger/fabric-ca-server
+    container_name: ca_mulmundra
     networks:
       - mpower_network
 
-  ca_aeml:
+  ca_aemlmumbai:
     image: hyperledger/fabric-ca:latest
     labels:
       service: hyperledger-fabric
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-aeml
+      - FABRIC_CA_SERVER_CA_NAME=ca-aemlmumbai
       - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_PORT=8054
     ports:
       - "8054:8054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
     volumes:
-      - ../organizations/fabric-ca/aeml:/etc/hyperledger/fabric-ca-server
-    container_name: ca_aeml
+      - ../organizations/fabric-ca/aemlmumbai:/etc/hyperledger/fabric-ca-server
+    container_name: ca_aemlmumbai
     networks:
       - mpower_network
 
-  ca_adanimundra:
+  ca_jvvnljaipur:
     image: hyperledger/fabric-ca:latest
     labels:
       service: hyperledger-fabric
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-adanimundra
+      - FABRIC_CA_SERVER_CA_NAME=ca-jvvnljaipur
       - FABRIC_CA_SERVER_TLS_ENABLED=true
-      - FABRIC_CA_SERVER_PORT=17054
+      - FABRIC_CA_SERVER_PORT=6054
     ports:
-      - "17054:17054"
+      - "6054:6054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
     volumes:
-      - ../organizations/fabric-ca/adanimundra:/etc/hyperledger/fabric-ca-server
-    container_name: ca_adanimundra
+      - ../organizations/fabric-ca/jvvnljaipur:/etc/hyperledger/fabric-ca-server
+    container_name: ca_jvvnljaipur
     networks:
       - mpower_network
 
-  ca_adanibitta:
+  ca_aprlkawai:
     image: hyperledger/fabric-ca:latest
     labels:
       service: hyperledger-fabric
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-adanibitta
+      - FABRIC_CA_SERVER_CA_NAME=ca-aprlkawai
       - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_PORT=10054
     ports:
       - "10054:10054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
     volumes:
-      - ../organizations/fabric-ca/adanibitta:/etc/hyperledger/fabric-ca-server
-    container_name: ca_adanibitta
+      - ../organizations/fabric-ca/aprlkawai:/etc/hyperledger/fabric-ca-server
+    container_name: ca_aprlkawai
     networks:
       - mpower_network
 
-  ca_adanitiroda:
+  ca_apmltiroda:
     image: hyperledger/fabric-ca:latest
     labels:
       service: hyperledger-fabric
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-adanitiroda
+      - FABRIC_CA_SERVER_CA_NAME=ca-apmltiroda
       - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_PORT=11054
     ports:
       - "11054:11054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
     volumes:
-      - ../organizations/fabric-ca/adanitiroda:/etc/hyperledger/fabric-ca-server
-    container_name: ca_adanitiroda
+      - ../organizations/fabric-ca/apmltiroda:/etc/hyperledger/fabric-ca-server
+    container_name: ca_apmltiroda
     networks:
       - mpower_network
 
-  ca_adanikawai:
+  ca_apmlmundra:
     image: hyperledger/fabric-ca:latest
     labels:
       service: hyperledger-fabric
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-adanikawai
+      - FABRIC_CA_SERVER_CA_NAME=ca-apmlmundra
       - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_PORT=12054
     ports:
       - "12054:12054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
     volumes:
-      - ../organizations/fabric-ca/adanikawai:/etc/hyperledger/fabric-ca-server
-    container_name: ca_adanikawai
-    networks:
-      - mpower_network
-
-  ca_pgcil:
-    image: hyperledger/fabric-ca:latest
-    labels:
-      service: hyperledger-fabric
-    environment:
-      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-pgcil
-      - FABRIC_CA_SERVER_TLS_ENABLED=true
-      - FABRIC_CA_SERVER_PORT=13054
-    ports:
-      - "13054:13054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
-    volumes:
-      - ../organizations/fabric-ca/pgcil:/etc/hyperledger/fabric-ca-server
-    container_name: ca_pgcil
-    networks:
-      - mpower_network
-
-  ca_rrvpnl:
-    image: hyperledger/fabric-ca:latest
-    labels:
-      service: hyperledger-fabric
-    environment:
-      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-rrvpnl
-      - FABRIC_CA_SERVER_TLS_ENABLED=true
-      - FABRIC_CA_SERVER_PORT=14054
-    ports:
-      - "14054:14054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
-    volumes:
-      - ../organizations/fabric-ca/rrvpnl:/etc/hyperledger/fabric-ca-server
-    container_name: ca_rrvpnl
-    networks:
-      - mpower_network
-
-  ca_msetcl:
-    image: hyperledger/fabric-ca:latest
-    labels:
-      service: hyperledger-fabric
-    environment:
-      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-msetcl
-      - FABRIC_CA_SERVER_TLS_ENABLED=true
-      - FABRIC_CA_SERVER_PORT=15054
-    ports:
-      - "15054:15054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
-    volumes:
-      - ../organizations/fabric-ca/msetcl:/etc/hyperledger/fabric-ca-server
-    container_name: ca_msetcl
+      - ../organizations/fabric-ca/apmlmundra:/etc/hyperledger/fabric-ca-server
+    container_name: ca_apmlmundra
     networks:
       - mpower_network
 
@@ -180,13 +126,157 @@ services:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca-getco
       - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_PORT=13054
+    ports:
+      - "13054:13054"
+    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    volumes:
+      - ../organizations/fabric-ca/getco:/etc/hyperledger/fabric-ca-server
+    container_name: ca_getco
+    networks:
+      - mpower_network
+
+  ca_msetcl:
+    image: hyperledger/fabric-ca:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-msetcl
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_PORT=14054
+    ports:
+      - "14054:14054"
+    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    volumes:
+      - ../organizations/fabric-ca/msetcl:/etc/hyperledger/fabric-ca-server
+    container_name: ca_msetcl
+    networks:
+      - mpower_network
+
+  ca_rrvpnl:
+    image: hyperledger/fabric-ca:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-rrvpnl
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_PORT=15054
+    ports:
+      - "15054:15054"
+    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    volumes:
+      - ../organizations/fabric-ca/rrvpnl:/etc/hyperledger/fabric-ca-server
+    container_name: ca_rrvpnl
+    networks:
+      - mpower_network
+
+  ca_pgcil:
+    image: hyperledger/fabric-ca:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-pgcil
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_PORT=16054
     ports:
       - "16054:16054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
     volumes:
-      - ../organizations/fabric-ca/getco:/etc/hyperledger/fabric-ca-server
-    container_name: ca_getco
+      - ../organizations/fabric-ca/pgcil:/etc/hyperledger/fabric-ca-server
+    container_name: ca_pgcil
+    networks:
+      - mpower_network
+
+  ca_gujaratsldc:
+    image: hyperledger/fabric-ca:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-gujaratsldc
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_PORT=17054
+    ports:
+      - "17054:17054"
+    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    volumes:
+      - ../organizations/fabric-ca/gujaratsldc:/etc/hyperledger/fabric-ca-server
+    container_name: ca_gujaratsldc
+    networks:
+      - mpower_network
+
+  ca_maharastrasldc:
+    image: hyperledger/fabric-ca:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-maharastrasldc
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_PORT=18054
+    ports:
+      - "18054:18054"
+    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    volumes:
+      - ../organizations/fabric-ca/maharastrasldc:/etc/hyperledger/fabric-ca-server
+    container_name: ca_maharastrasldc
+    networks:
+      - mpower_network
+
+  ca_rajasthansldc:
+    image: hyperledger/fabric-ca:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-rajasthansldc
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_PORT=19054
+    ports:
+      - "19054:19054"
+    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    volumes:
+      - ../organizations/fabric-ca/rajasthansldc:/etc/hyperledger/fabric-ca-server
+    container_name: ca_rajasthansldc
+    networks:
+      - mpower_network
+
+  ca_westernrldc:
+    image: hyperledger/fabric-ca:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-westernrldc
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_PORT=20054
+    ports:
+      - "20054:20054"
+    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    volumes:
+      - ../organizations/fabric-ca/westernrldc:/etc/hyperledger/fabric-ca-server
+    container_name: ca_westernrldc
+    networks:
+      - mpower_network
+
+  ca_northernrldc:
+    image: hyperledger/fabric-ca:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-northernrldc
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_PORT=21054
+    ports:
+      - "21054:21054"
+    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    volumes:
+      - ../organizations/fabric-ca/northernrldc:/etc/hyperledger/fabric-ca-server
+    container_name: ca_northernrldc
     networks:
       - mpower_network
 

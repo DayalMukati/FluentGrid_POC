@@ -247,7 +247,7 @@ affiliations:
       - department1
    pgcil:
       - department1
-   rrvpnl:
+   westernrldc:
       - department1
    adanimundra:
       - department1
@@ -316,16 +316,16 @@ signing:
 #     CA certificates though it can still issue end entity certificates.
 ###########################################################################
 csr:
-   cn: ca.aeml.mpower.in
+   cn: ca.westernrldc.mpower.in
    names:
       - C: UK
         ST: "Hampshire"
         L: "Hursley"
-        O: aeml.mpower.in
+        O: westernrldc.mpower.in
         OU:
    hosts:
      - localhost
-     - aeml.mpower.in
+     - westernrldc.mpower.in
    ca:
       expiry: 131400h
       pathlength: 1

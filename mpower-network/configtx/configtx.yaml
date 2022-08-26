@@ -25,7 +25,7 @@ Organizations:
         ID: OrdererMSP
 
         # MSPDir is the filesystem path which contains the MSP configuration
-        MSPDir: ../organizations/ordererOrganizations/example.com/msp
+        MSPDir: ../organizations/ordererOrganizations/mpower.in/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -42,17 +42,17 @@ Organizations:
                 Rule: "OR('OrdererMSP.admin')"
 
         OrdererEndpoints:
-            - orderer.example.com:7050
+            - orderer.mpower.in:7050
 
-    - &MUL
+    - &MULMUNDRA
         # DefaultOrg defines the organization which is used in the sampleconfig
         # of the fabric.git development environment
-        Name: MULMSP
+        Name: MULMUNDRAMSP
 
         # ID to load the MSP definition as
-        ID: MULMSP
+        ID: MULMUNDRAMSP
 
-        MSPDir: ../organizations/peerOrganizations/mul.example.com/msp
+        MSPDir: ../organizations/peerOrganizations/mulmundra.mpower.in/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -60,26 +60,26 @@ Organizations:
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('MULMSP.admin', 'MULMSP.peer', 'MULMSP.client')"
+                Rule: "OR('MULMUNDRAMSP.admin', 'MULMUNDRAMSP.peer', 'MULMUNDRAMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('MULMSP.admin', 'MULMSP.client')"
+                Rule: "OR('MULMUNDRAMSP.admin', 'MULMUNDRAMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('MULMSP.admin')"
+                Rule: "OR('MULMUNDRAMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('MULMSP.peer')"
+                Rule: "OR('MULMUNDRAMSP.peer')"
 
-    - &AEML
+    - &AEMLMUMBAI
         # DefaultOrg defines the organization which is used in the sampleconfig
         # of the fabric.git development environment
-        Name: AEMLMSP
+        Name: AEMLMUMBAIMSP
 
         # ID to load the MSP definition as
-        ID: AEMLMSP
+        ID: AEMLMUMBAIMSP
 
-        MSPDir: ../organizations/peerOrganizations/aeml.example.com/msp
+        MSPDir: ../organizations/peerOrganizations/aemlmumbai.mpower.in/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -87,16 +87,124 @@ Organizations:
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('AEMLMSP.admin', 'AEMLMSP.peer', 'AEMLMSP.client')"
+                Rule: "OR('AEMLMUMBAIMSP.admin', 'AEMLMUMBAIMSP.peer', 'AEMLMUMBAIMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('AEMLMSP.admin', 'AEMLMSP.client')"
+                Rule: "OR('AEMLMUMBAIMSP.admin', 'AEMLMUMBAIMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('AEMLMSP.admin')"
+                Rule: "OR('AEMLMUMBAIMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('AEMLMSP.peer')"
+                Rule: "OR('AEMLMUMBAIMSP.peer')"
+  
+    - &JVVNL
+        # DefaultOrg defines the organization which is used in the sampleconfig
+        # of the fabric.git development environment
+        Name: JVVNLMSP
+
+        # ID to load the MSP definition as
+        ID: JVVNLMSP
+
+        MSPDir: ../organizations/peerOrganizations/jvvnljaipur.mpower.in/msp
+
+        # Policies defines the set of policies at this level of the config tree
+        # For organization policies, their canonical path is usually
+        #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('JVVNLMSP.admin', 'JVVNLMSP.peer', 'JVVNLMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('JVVNLMSP.admin', 'JVVNLMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('JVVNLMSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('JVVNLMSP.peer')"
+
+    - &APRLKAWAI
+        # DefaultOrg defines the organization which is used in the sampleconfig
+        # of the fabric.git development environment
+        Name: APRLKAWAIMSP
+
+        # ID to load the MSP definition as
+        ID: APRLKAWAIMSP
+
+        MSPDir: ../organizations/peerOrganizations/aprlkawai.mpower.in/msp
+
+        # Policies defines the set of policies at this level of the config tree
+        # For organization policies, their canonical path is usually
+        #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('APRLKAWAIMSP.admin', 'APRLKAWAIMSP.peer', 'APRLKAWAIMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('APRLKAWAIMSP.admin', 'APRLKAWAIMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('APRLKAWAIMSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('APRLKAWAIMSP.peer')"
+
+    - &APMLTIRODA
+        # DefaultOrg defines the organization which is used in the sampleconfig
+        # of the fabric.git development environment
+        Name: APMLTIRODAMSP
+
+        # ID to load the MSP definition as
+        ID: APMLTIRODAMSP
+
+        MSPDir: ../organizations/peerOrganizations/apmltiroda.mpower.in/msp
+
+        # Policies defines the set of policies at this level of the config tree
+        # For organization policies, their canonical path is usually
+        #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('APMLTIRODAMSP.admin', 'APMLTIRODAMSP.peer', 'APMLTIRODAMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('APMLTIRODAMSP.admin', 'APMLTIRODAMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('APMLTIRODAMSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('APMLTIRODAMSP.peer')"
+
+    - &APMLMUNDRA
+        # DefaultOrg defines the organization which is used in the sampleconfig
+        # of the fabric.git development environment
+        Name: APMLMUNDRAMSP
+
+        # ID to load the MSP definition as
+        ID: APMLMUNDRAMSP
+
+        MSPDir: ../organizations/peerOrganizations/apmlmundra.mpower.in/msp
+
+        # Policies defines the set of policies at this level of the config tree
+        # For organization policies, their canonical path is usually
+        #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('APMLMUNDRAMSP.admin', 'APMLMUNDRAMSP.peer', 'APMLMUNDRAMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('APMLMUNDRAMSP.admin', 'APMLMUNDRAMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('APMLMUNDRAMSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('APMLMUNDRAMSP.peer')"
 
     - &GETCO
         # DefaultOrg defines the organization which is used in the sampleconfig
@@ -106,7 +214,7 @@ Organizations:
         # ID to load the MSP definition as
         ID: GETCOMSP
 
-        MSPDir: ../organizations/peerOrganizations/getco.example.com/msp
+        MSPDir: ../organizations/peerOrganizations/getco.mpower.in/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -125,6 +233,33 @@ Organizations:
                 Type: Signature
                 Rule: "OR('GETCOMSP.peer')"
 
+    - &MSETCL
+        # DefaultOrg defines the organization which is used in the sampleconfig
+        # of the fabric.git development environment
+        Name: MSETCLMSP
+
+        # ID to load the MSP definition as
+        ID: MSETCLMSP
+
+        MSPDir: ../organizations/peerOrganizations/msetcl.mpower.in/msp
+
+        # Policies defines the set of policies at this level of the config tree
+        # For organization policies, their canonical path is usually
+        #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('MSETCLMSP.admin', 'MSETCLMSP.peer', 'MSETCLMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('MSETCLMSP.admin', 'MSETCLMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('MSETCLMSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('MSETCLMSP.peer')"
+
     - &RRVPNL
         # DefaultOrg defines the organization which is used in the sampleconfig
         # of the fabric.git development environment
@@ -133,7 +268,7 @@ Organizations:
         # ID to load the MSP definition as
         ID: RRVPNLMSP
 
-        MSPDir: ../organizations/peerOrganizations/rrvpnl.example.com/msp
+        MSPDir: ../organizations/peerOrganizations/rrvpnl.mpower.in/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -160,7 +295,7 @@ Organizations:
         # ID to load the MSP definition as
         ID: PGCILMSP
 
-        MSPDir: ../organizations/peerOrganizations/pgcil.example.com/msp
+        MSPDir: ../organizations/peerOrganizations/pgcil.mpower.in/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -179,15 +314,15 @@ Organizations:
                 Type: Signature
                 Rule: "OR('PGCILMSP.peer')"
 
-    - &MSETCL
+    - &GUJSLDC
         # DefaultOrg defines the organization which is used in the sampleconfig
         # of the fabric.git development environment
-        Name: MSETCLMSP
+        Name: GUJSLDCMSP
 
         # ID to load the MSP definition as
-        ID: MSETCLMSP
+        ID: GUJSLDCMSP
 
-        MSPDir: ../organizations/peerOrganizations/msetcl.example.com/msp
+        MSPDir: ../organizations/peerOrganizations/gujaratsldc.mpower.in/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -195,26 +330,26 @@ Organizations:
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('MSETCLMSP.admin', 'MSETCLMSP.peer', 'MSETCLMSP.client')"
+                Rule: "OR('GUJSLDCMSP.admin', 'GUJSLDCMSP.peer', 'GUJSLDCMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('MSETCLMSP.admin', 'MSETCLMSP.client')"
+                Rule: "OR('GUJSLDCMSP.admin', 'GUJSLDCMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('MSETCLMSP.admin')"
+                Rule: "OR('GUJSLDCMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('MSETCLMSP.peer')"
+                Rule: "OR('GUJSLDCMSP.peer')"
 
-    - &ADANIBITTA
+    - &MAHASLDC
         # DefaultOrg defines the organization which is used in the sampleconfig
         # of the fabric.git development environment
-        Name: ADANIBITTAMSP
+        Name: MAHASLDCMSP
 
         # ID to load the MSP definition as
-        ID: ADANIBITTAMSP
+        ID: MAHASLDCMSP
 
-        MSPDir: ../organizations/peerOrganizations/adanibitta.example.com/msp
+        MSPDir: ../organizations/peerOrganizations/maharastrasldc.mpower.in/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -222,98 +357,98 @@ Organizations:
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('ADANIBITTAMSP.admin', 'ADANIBITTAMSP.peer', 'ADANIBITTAMSP.client')"
+                Rule: "OR('MAHASLDCMSP.admin', 'MAHASLDCMSP.peer', 'MAHASLDCMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('ADANIBITTAMSP.admin', 'ADANIBITTAMSP.client')"
+                Rule: "OR('MAHASLDCMSP.admin', 'MAHASLDCMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('ADANIBITTAMSP.admin')"
+                Rule: "OR('MAHASLDCMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('ADANIBITTAMSP.peer')"
-
-    - &ADANIKAWAI
-        # DefaultOrg defines the organization which is used in the sampleconfig
-        # of the fabric.git development environment
-        Name: ADANIKAWAIMSP
-
-        # ID to load the MSP definition as
-        ID: ADANIKAWAIMSP
-
-        MSPDir: ../organizations/peerOrganizations/adanikawai.example.com/msp
-
-        # Policies defines the set of policies at this level of the config tree
-        # For organization policies, their canonical path is usually
-        #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
-        Policies:
-            Readers:
-                Type: Signature
-                Rule: "OR('ADANIKAWAIMSP.admin', 'ADANIKAWAIMSP.peer', 'ADANIKAWAIMSP.client')"
-            Writers:
-                Type: Signature
-                Rule: "OR('ADANIKAWAIMSP.admin', 'ADANIKAWAIMSP.client')"
-            Admins:
-                Type: Signature
-                Rule: "OR('ADANIKAWAIMSP.admin')"
-            Endorsement:
-                Type: Signature
-                Rule: "OR('ADANIKAWAIMSP.peer')"
-
-    - &ADANIMUNDRA
-        # DefaultOrg defines the organization which is used in the sampleconfig
-        # of the fabric.git development environment
-        Name: ADANIMUNDRAMSP
-
-        # ID to load the MSP definition as
-        ID: ADANIMUNDRAMSP
-
-        MSPDir: ../organizations/peerOrganizations/adanimundra.example.com/msp
-
-        # Policies defines the set of policies at this level of the config tree
-        # For organization policies, their canonical path is usually
-        #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
-        Policies:
-            Readers:
-                Type: Signature
-                Rule: "OR('ADANIMUNDRAMSP.admin', 'ADANIMUNDRAMSP.peer', 'ADANIMUNDRAMSP.client')"
-            Writers:
-                Type: Signature
-                Rule: "OR('ADANIMUNDRAMSP.admin', 'ADANIMUNDRAMSP.client')"
-            Admins:
-                Type: Signature
-                Rule: "OR('ADANIMUNDRAMSP.admin')"
-            Endorsement:
-                Type: Signature
-                Rule: "OR('ADANIMUNDRAMSP.peer')"
-
-    - &ADANITIRODA
-        # DefaultOrg defines the organization which is used in the sampleconfig
-        # of the fabric.git development environment
-        Name: ADANITIRODAMSP
-
-        # ID to load the MSP definition as
-        ID: ADANITIRODAMSP
-
-        MSPDir: ../organizations/peerOrganizations/adanitiroda.example.com/msp
-
-        # Policies defines the set of policies at this level of the config tree
-        # For organization policies, their canonical path is usually
-        #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
-        Policies:
-            Readers:
-                Type: Signature
-                Rule: "OR('ADANITIRODAMSP.admin', 'ADANITIRODAMSP.peer', 'ADANITIRODAMSP.client')"
-            Writers:
-                Type: Signature
-                Rule: "OR('ADANITIRODAMSP.admin', 'ADANITIRODAMSP.client')"
-            Admins:
-                Type: Signature
-                Rule: "OR('ADANITIRODAMSP.admin')"
-            Endorsement:
-                Type: Signature
-                Rule: "OR('ADANITIRODAMSP.peer')"
+                Rule: "OR('MAHASLDCMSP.peer')"
     
+    - &RAJSLDC
+        # DefaultOrg defines the organization which is used in the sampleconfig
+        # of the fabric.git development environment
+        Name: RAJSLDCMSP
+
+        # ID to load the MSP definition as
+        ID: RAJSLDCMSP
+
+        MSPDir: ../organizations/peerOrganizations/rajasthansldc.mpower.in/msp
+
+        # Policies defines the set of policies at this level of the config tree
+        # For organization policies, their canonical path is usually
+        #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('RAJSLDCMSP.admin', 'RAJSLDCMSP.peer', 'RAJSLDCMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('RAJSLDCMSP.admin', 'RAJSLDCMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('RAJSLDCMSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('RAJSLDCMSP.peer')"
+
+    - &WESTRLDC
+        # DefaultOrg defines the organization which is used in the sampleconfig
+        # of the fabric.git development environment
+        Name: WESTRLDCMSP
+
+        # ID to load the MSP definition as
+        ID: WESTRLDCMSP
+
+        MSPDir: ../organizations/peerOrganizations/westernrldc.mpower.in/msp
+
+        # Policies defines the set of policies at this level of the config tree
+        # For organization policies, their canonical path is usually
+        #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('WESTRLDCMSP.admin', 'WESTRLDCMSP.peer', 'WESTRLDCMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('WESTRLDCMSP.admin', 'WESTRLDCMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('WESTRLDCMSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('WESTRLDCMSP.peer')"
+
+    - &NORTHRLDC
+        # DefaultOrg defines the organization which is used in the sampleconfig
+        # of the fabric.git development environment
+        Name: NORTHRLDCMSP
+
+        # ID to load the MSP definition as
+        ID: NORTHRLDCMSP
+
+        MSPDir: ../organizations/peerOrganizations/northernrldc.mpower.in/msp
+
+        # Policies defines the set of policies at this level of the config tree
+        # For organization policies, their canonical path is usually
+        #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('NORTHRLDCMSP.admin', 'NORTHRLDCMSP.peer', 'NORTHRLDCMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('NORTHRLDCMSP.admin', 'NORTHRLDCMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('NORTHRLDCMSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('NORTHRLDCMSP.peer')"
+
 ################################################################################
 #
 #   SECTION: Capabilities
@@ -425,14 +560,14 @@ Orderer: &OrdererDefaults
     # as TLS validation.  The preferred way to specify orderer addresses is now
     # to include the OrdererEndpoints item in your org definition
     Addresses:
-        - orderer.example.com:7050
+        - orderer.mpower.in:7050
 
     EtcdRaft:
         Consenters:
-        - Host: orderer.example.com
+        - Host: orderer.mpower.in
           Port: 7050
-          ClientTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
-          ServerTLSCert: ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+          ClientTLSCert: ../organizations/ordererOrganizations/mpower.in/orderers/orderer.mpower.in/tls/server.crt
+          ServerTLSCert: ../organizations/ordererOrganizations/mpower.in/orderers/orderer.mpower.in/tls/server.crt
 
     # Batch Timeout: The amount of time to wait before creating a batch
     BatchTimeout: 2s
@@ -517,7 +652,7 @@ Channel: &ChannelDefaults
 ################################################################################
 Profiles:
 
-    AdaniBittaGetcoMul:
+    ChannelOne:
         <<: *ChannelDefaults
         Orderer:
             <<: *OrdererDefaults
@@ -528,8 +663,176 @@ Profiles:
         Application:
             <<: *ApplicationDefaults
             Organizations:
-                - *MUL
+                - *APRLKAWAI
+                - *RRVPNL
+                - *RAJSLDC
+                - *PGCIL
+                - *WESTRLDC
+                - *GUJSLDC
                 - *GETCO
-                - *ADANIBITTA
+                - *MULMUNDRA
+            Capabilities:
+                <<: *ApplicationCapabilities
+    ChannelTwo:
+        <<: *ChannelDefaults
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *OrdererOrg
+            Capabilities:
+                <<: *OrdererCapabilities
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *APMLTIRODA
+                - *MSETCL
+                - *MAHASLDC
+                - *PGCIL
+                - *WESTRLDC
+                - *GUJSLDC
+                - *GETCO
+                - *MULMUNDRA
+            Capabilities:
+                <<: *ApplicationCapabilities
+
+    ChannelThree:
+        <<: *ChannelDefaults
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *OrdererOrg
+            Capabilities:
+                <<: *OrdererCapabilities
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *APMLMUNDRA
+                - *GETCO
+                - *GUJSLDC
+                - *MULMUNDRA
+            Capabilities:
+                <<: *ApplicationCapabilities
+
+    ChannelFour:
+        <<: *ChannelDefaults
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *OrdererOrg
+            Capabilities:
+                <<: *OrdererCapabilities
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *APRLKAWAI
+                - *RRVPNL
+                - *RAJSLDC
+                - *PGCIL
+                - *NORTHRLDC
+                - *WESTRLDC
+                - *MAHASLDC
+                - *MSETCL
+                - *AEMLMUMBAI
+            Capabilities:
+                <<: *ApplicationCapabilities
+
+    ChannelFive:
+        <<: *ChannelDefaults
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *OrdererOrg
+            Capabilities:
+                <<: *OrdererCapabilities
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *APMLTIRODA
+                - *MSETCL
+                - *MAHASLDC
+                - *AEMLMUMBAI
+            Capabilities:
+                <<: *ApplicationCapabilities
+
+    ChannelSix:
+        <<: *ChannelDefaults
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *OrdererOrg
+            Capabilities:
+                <<: *OrdererCapabilities
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *APMLMUNDRA
+                - *PGCIL
+                - *WESTRLDC
+                - *MAHASLDC
+                - *MSETCL
+                - *AEMLMUMBAI
+            Capabilities:
+                <<: *ApplicationCapabilities
+
+    ChannelSeven:
+        <<: *ChannelDefaults
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *OrdererOrg
+            Capabilities:
+                <<: *OrdererCapabilities
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *APRLKAWAI
+                - *RRVPNL
+                - *RAJSLDC
+                - *JVVNL
+            Capabilities:
+                <<: *ApplicationCapabilities
+
+    ChannelEight:
+        <<: *ChannelDefaults
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *OrdererOrg
+            Capabilities:
+                <<: *OrdererCapabilities
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *APMLTIRODA
+                - *MSETCL
+                - *MAHASLDC
+                - *PGCIL
+                - *WESTRLDC
+                - *NORTHRLDC
+                - *RAJSLDC
+                - *RRVPNL
+                - *JVVNL
+            Capabilities:
+                <<: *ApplicationCapabilities
+
+    ChannelNine:
+        <<: *ChannelDefaults
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *OrdererOrg
+            Capabilities:
+                <<: *OrdererCapabilities
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *APMLTIRODA
+                - *MSETCL
+                - *MAHASLDC
+                - *PGCIL
+                - *WESTRLDC
+                - *GUJSLDC
+                - *GETCO
+                - *MULMUNDRA
             Capabilities:
                 <<: *ApplicationCapabilities

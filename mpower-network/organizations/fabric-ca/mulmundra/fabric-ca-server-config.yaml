@@ -80,7 +80,7 @@ tls:
 #############################################################################
 ca:
   # Name of this CA
-  name: Org2CA
+  name: Org1CA
   # Key file (is only used to import a private key into BCCSP)
   keyfile:
   # Certificate file (default: ca-cert.pem)
@@ -237,7 +237,7 @@ ldap:
 # which are always stored in lower case.
 #############################################################################
 affiliations:
-   mul:
+   mulmundra:
       - department1
    aeml:
       - department1
@@ -316,16 +316,16 @@ signing:
 #     CA certificates though it can still issue end entity certificates.
 ###########################################################################
 csr:
-   cn: ca.adanikawai.mpower.in
+   cn: ca.mulmundra.mpower.in
    names:
-      - C: UK
-        ST: "Hampshire"
-        L: "Hursley"
-        O: adanikawai.mpower.in
+      - C: US
+        ST: "North Carolina"
+        L: "Durham"
+        O: mulmundra.mpower.in
         OU:
    hosts:
      - localhost
-     - adanikawai.mpower.in
+     - mulmundra.mpower.in
    ca:
       expiry: 131400h
       pathlength: 1

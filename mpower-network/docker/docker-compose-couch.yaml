@@ -9,8 +9,8 @@ networks:
   mpower_network:
 
 services:
-  couchdbmul:
-    container_name: couchdb_mul
+  couchdbmulmundra:
+    container_name: couchdb_mulmundra
     image: couchdb:3.1.1
     labels:
       service: hyperledger-fabric
@@ -26,20 +26,20 @@ services:
     networks:
       - mpower_network
 
-  peer0.mul.mpower.in:
+  peer0.mulmundra.mpower.in:
     environment:
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
-      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdbmul:5984
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdbmulmundra:5984
       # The CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME and CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
       # provide the credentials for ledger to connect to CouchDB.  The username and password must
       # match the username and password set for the associated CouchDB.
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admin
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=fluentgrid22
     depends_on:
-      - couchdbmul
+      - couchdbmulmundra
 
-  couchdbaeml:
-    container_name: couchdb_aeml
+  couchdbaemlmumbai:
+    container_name: couchdb_aemlmumbai
     image: couchdb:3.1.1
     labels:
       service: hyperledger-fabric
@@ -55,49 +55,20 @@ services:
     networks:
       - mpower_network
 
-  peer0.aeml.mpower.in:
+  peer0.aemlmumbai.mpower.in:
     environment:
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
-      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdbaeml:5984
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdbaemlmumbai:5984
       # The CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME and CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
       # provide the credentials for ledger to connect to CouchDB.  The username and password must
       # match the username and password set for the associated CouchDB.
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admin
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=fluentgrid22
     depends_on:
-      - couchdbaeml
+      - couchdbaemlmumbai
 
-  couchdbadanimundra:
-    container_name: couchdb_adanimundra
-    image: couchdb:3.1.1
-    labels:
-      service: hyperledger-fabric
-    # Populate the COUCHDB_USER and COUCHDB_PASSWORD to set an admin user and password
-    # for CouchDB.  This will prevent CouchDB from operating in an "Admin Party" mode.
-    environment:
-      - COUCHDB_USER=admin
-      - COUCHDB_PASSWORD=fluentgrid22
-    # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
-    # for example map it to utilize Fauxton User Interface in dev environments.
-    ports:
-      - "8984:5984"
-    networks:
-      - mpower_network
-
-  peer0.adanimundra.mpower.in:
-    environment:
-      - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
-      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdbadanimundra:5984
-      # The CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME and CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
-      # provide the credentials for ledger to connect to CouchDB.  The username and password must
-      # match the username and password set for the associated CouchDB.
-      - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admin
-      - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=fluentgrid22
-    depends_on:
-      - couchdbadanimundra
-
-  couchdbadanibitta:
-    container_name: couchdb_adanibitta
+  couchdbjvvnljaipur:
+    container_name: couchdb_jvvnljaipur
     image: couchdb:3.1.1
     labels:
       service: hyperledger-fabric
@@ -113,20 +84,20 @@ services:
     networks:
       - mpower_network
 
-  peer0.adanibitta.mpower.in:
+  peer0.jvvnljaipur.mpower.in:
     environment:
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
-      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdbadanibitta:5984
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdbjvvnljaipur:5984
       # The CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME and CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
       # provide the credentials for ledger to connect to CouchDB.  The username and password must
       # match the username and password set for the associated CouchDB.
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admin
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=fluentgrid22
     depends_on:
-      - couchdbadanibitta
+      - couchdbjvvnljaipur
 
-  couchdbadanikawai:
-    container_name: couchdb_adanikawai
+  couchdbaprlkawai:
+    container_name: couchdb_aprlkawai
     image: couchdb:3.1.1
     labels:
       service: hyperledger-fabric
@@ -142,20 +113,20 @@ services:
     networks:
       - mpower_network
 
-  peer0.adanikawai.mpower.in:
+  peer0.aprlkawai.mpower.in:
     environment:
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
-      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdbadanikawai:5984
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdbaprlkawai:5984
       # The CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME and CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
       # provide the credentials for ledger to connect to CouchDB.  The username and password must
       # match the username and password set for the associated CouchDB.
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admin
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=fluentgrid22
     depends_on:
-      - couchdbadanikawai
+      - couchdbaprlkawai
 
-  couchdbadanitiroda:
-    container_name: couchdb_adanitiroda
+  couchdbapmltiroda:
+    container_name: couchdb_apmltiroda
     image: couchdb:3.1.1
     labels:
       service: hyperledger-fabric
@@ -171,17 +142,46 @@ services:
     networks:
       - mpower_network
 
-  peer0.adanitiroda.mpower.in:
+  peer0.apmltiroda.mpower.in:
     environment:
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
-      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdbadanitiroda:5984
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdbapmltiroda:5984
       # The CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME and CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
       # provide the credentials for ledger to connect to CouchDB.  The username and password must
       # match the username and password set for the associated CouchDB.
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admin
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=fluentgrid22
     depends_on:
-      - couchdbadanitiroda
+      - couchdbapmltiroda
+
+  couchdbapmlmundra:
+    container_name: couchdb_apmlmundra
+    image: couchdb:3.1.1
+    labels:
+      service: hyperledger-fabric
+    # Populate the COUCHDB_USER and COUCHDB_PASSWORD to set an admin user and password
+    # for CouchDB.  This will prevent CouchDB from operating in an "Admin Party" mode.
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=fluentgrid22
+    # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
+    # for example map it to utilize Fauxton User Interface in dev environments.
+    ports:
+      - "8984:5984"
+    networks:
+      - mpower_network
+
+  peer0.apmlmundra.mpower.in:
+    environment:
+      - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdbapmlmundra:5984
+      # The CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME and CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
+      # provide the credentials for ledger to connect to CouchDB.  The username and password must
+      # match the username and password set for the associated CouchDB.
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admin
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=fluentgrid22
+    depends_on:
+      - couchdbapmlmundra
 
   couchdbgetco:
     container_name: couchdb_getco
@@ -212,6 +212,35 @@ services:
     depends_on:
       - couchdbgetco
 
+  couchdbmsetcl:
+    container_name: couchdb_msetcl
+    image: couchdb:3.1.1
+    labels:
+      service: hyperledger-fabric
+    # Populate the COUCHDB_USER and COUCHDB_PASSWORD to set an admin user and password
+    # for CouchDB.  This will prevent CouchDB from operating in an "Admin Party" mode.
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=fluentgrid22
+    # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
+    # for example map it to utilize Fauxton User Interface in dev environments.
+    ports:
+      - "13984:5984"
+    networks:
+      - mpower_network
+
+  peer0.msetcl.mpower.in:
+    environment:
+      - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdbmsetcl:5984
+      # The CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME and CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
+      # provide the credentials for ledger to connect to CouchDB.  The username and password must
+      # match the username and password set for the associated CouchDB.
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admin
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=fluentgrid22
+    depends_on:
+      - couchdbmsetcl
+
   couchdbrrvpnl:
     container_name: couchdb_rrvpnl
     image: couchdb:3.1.1
@@ -225,7 +254,7 @@ services:
     # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
     # for example map it to utilize Fauxton User Interface in dev environments.
     ports:
-      - "13984:5984"
+      - "14984:5984"
     networks:
       - mpower_network
 
@@ -254,7 +283,7 @@ services:
     # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
     # for example map it to utilize Fauxton User Interface in dev environments.
     ports:
-      - "14984:5984"
+      - "20984:5984"
     networks:
       - mpower_network
 
@@ -269,3 +298,148 @@ services:
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=fluentgrid22
     depends_on:
       - couchdbpgcil
+
+  couchdbgujaratsldc:
+    container_name: couchdb_gujaratsldc
+    image: couchdb:3.1.1
+    labels:
+      service: hyperledger-fabric
+    # Populate the COUCHDB_USER and COUCHDB_PASSWORD to set an admin user and password
+    # for CouchDB.  This will prevent CouchDB from operating in an "Admin Party" mode.
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=fluentgrid22
+    # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
+    # for example map it to utilize Fauxton User Interface in dev environments.
+    ports:
+      - "15984:5984"
+    networks:
+      - mpower_network
+
+  peer0.gujaratsldc.mpower.in:
+    environment:
+      - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdbgujaratsldc:5984
+      # The CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME and CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
+      # provide the credentials for ledger to connect to CouchDB.  The username and password must
+      # match the username and password set for the associated CouchDB.
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admin
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=fluentgrid22
+    depends_on:
+      - couchdbgujaratsldc
+
+  couchdbmaharastrasldc:
+    container_name: couchdb_maharastrasldc
+    image: couchdb:3.1.1
+    labels:
+      service: hyperledger-fabric
+    # Populate the COUCHDB_USER and COUCHDB_PASSWORD to set an admin user and password
+    # for CouchDB.  This will prevent CouchDB from operating in an "Admin Party" mode.
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=fluentgrid22
+    # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
+    # for example map it to utilize Fauxton User Interface in dev environments.
+    ports:
+      - "16984:5984"
+    networks:
+      - mpower_network
+
+  peer0.maharastrasldc.mpower.in:
+    environment:
+      - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdbmaharastrasldc:5984
+      # The CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME and CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
+      # provide the credentials for ledger to connect to CouchDB.  The username and password must
+      # match the username and password set for the associated CouchDB.
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admin
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=fluentgrid22
+    depends_on:
+      - couchdbmaharastrasldc
+
+  couchdbrajasthansldc:
+    container_name: couchdb_rajasthansldc
+    image: couchdb:3.1.1
+    labels:
+      service: hyperledger-fabric
+    # Populate the COUCHDB_USER and COUCHDB_PASSWORD to set an admin user and password
+    # for CouchDB.  This will prevent CouchDB from operating in an "Admin Party" mode.
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=fluentgrid22
+    # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
+    # for example map it to utilize Fauxton User Interface in dev environments.
+    ports:
+      - "17984:5984"
+    networks:
+      - mpower_network
+
+  peer0.rajasthansldc.mpower.in:
+    environment:
+      - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdbrajasthansldc:5984
+      # The CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME and CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
+      # provide the credentials for ledger to connect to CouchDB.  The username and password must
+      # match the username and password set for the associated CouchDB.
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admin
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=fluentgrid22
+    depends_on:
+      - couchdbrajasthansldc
+
+  couchdbwesternrldc:
+    container_name: couchdb_westernrldc
+    image: couchdb:3.1.1
+    labels:
+      service: hyperledger-fabric
+    # Populate the COUCHDB_USER and COUCHDB_PASSWORD to set an admin user and password
+    # for CouchDB.  This will prevent CouchDB from operating in an "Admin Party" mode.
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=fluentgrid22
+    # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
+    # for example map it to utilize Fauxton User Interface in dev environments.
+    ports:
+      - "18984:5984"
+    networks:
+      - mpower_network
+
+  peer0.westernrldc.mpower.in:
+    environment:
+      - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdbwesternrldc:5984
+      # The CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME and CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
+      # provide the credentials for ledger to connect to CouchDB.  The username and password must
+      # match the username and password set for the associated CouchDB.
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admin
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=fluentgrid22
+    depends_on:
+      - couchdbwesternrldc
+
+  couchdbnorthernrldc:
+    container_name: couchdb_northernrldc
+    image: couchdb:3.1.1
+    labels:
+      service: hyperledger-fabric
+    # Populate the COUCHDB_USER and COUCHDB_PASSWORD to set an admin user and password
+    # for CouchDB.  This will prevent CouchDB from operating in an "Admin Party" mode.
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=fluentgrid22
+    # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
+    # for example map it to utilize Fauxton User Interface in dev environments.
+    ports:
+      - "19984:5984"
+    networks:
+      - mpower_network
+
+  peer0.northernrldc.mpower.in:
+    environment:
+      - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdbnorthernrldc:5984
+      # The CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME and CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
+      # provide the credentials for ledger to connect to CouchDB.  The username and password must
+      # match the username and password set for the associated CouchDB.
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admin
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=fluentgrid22
+    depends_on:
+      - couchdbnorthernrldc
