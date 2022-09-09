@@ -284,39 +284,62 @@ chaincodeQuery() {
 
 ## package the chaincode
 packageChaincode
+if [ "$CHANNEL_NAME" = "channelone" ]; then
+    ## Install chaincode on peer0.org1 and peer0.org2
+    infoln "Installing chaincode on MULMUNDRA..."
+    installChaincode 1
+    infoln "Install chaincode on APRL_Kawai"
+    installChaincode 4
+    infoln "Install chaincode on GETCO"
+    installChaincode 7
+    infoln "Install chaincode on RRVPNL peer"
+    installChaincode 9
+    infoln "Install chaincode on PGCIL.."
+    installChaincode 10
+    infoln "Install chaincode on Gujarat_SLDC."
+    installChaincode 11
+    infoln "Install chaincode on Rajasthan_SLDC.."
+    installChaincode 13
+    infoln "Install chaincode on WRLDC."
+    installChaincode 14
 
-## Install chaincode on peer0.org1 and peer0.org2
-infoln "Installing chaincode on peer0.org1..."
-installChaincode 1
-infoln "Install chaincode on peer0.org2..."
-installChaincode 2
 
-## query whether the chaincode is installed
-queryInstalled 1
+    ## query whether the chaincode is installed
+    queryInstalled 1
 
-## approve the definition for org1
-approveForMyOrg 1
+    ## approve the definition for org1
+    approveForMyOrg 1
+    approveForMyOrg 4
+    approveForMyOrg 7
+    approveForMyOrg 9
+    approveForMyOrg 10
+    approveForMyOrg 11
+    approveForMyOrg 13
+    approveForMyOrg 14
 
-## check whether the chaincode definition is ready to be committed
-## expect org1 to have approved and org2 not to
-checkCommitReadiness 1 "\"Org1MSP\": true" "\"Org2MSP\": false"
-checkCommitReadiness 2 "\"Org1MSP\": true" "\"Org2MSP\": false"
+    ## check whether the chaincode definition is ready to be committed
+    ## expect org1 to have approved and org2 not to
+    # checkCommitReadiness 1 "\"Org1MSP\": true" "\"Org2MSP\": false"
 
-## now approve also for org2
-approveForMyOrg 2
+    ## now that we know for sure both orgs have approved, commit the definition
+    commitChaincodeDefinition 1 4 7 9 10
 
-## check whether the chaincode definition is ready to be committed
-## expect them both to have approved
-checkCommitReadiness 1 "\"Org1MSP\": true" "\"Org2MSP\": true"
-checkCommitReadiness 2 "\"Org1MSP\": true" "\"Org2MSP\": true"
+    ## query on both orgs to see that the definition committed successfully
+    queryCommitted 1
+    queryCommitted 4
+  if [ "$CC_INIT_FCN" = "NA" ]; then
+  infoln "Chaincode initialization is not required"
+  else
+  chaincodeInvokeInit 1 4 7 9 10
+  fi
 
-## now that we know for sure both orgs have approved, commit the definition
-commitChaincodeDefinition 1 2
 
-## query on both orgs to see that the definition committed successfully
-queryCommitted 1
-queryCommitted 2
-
+elif ["$CHANNEL_NAME" = "channelone"]; then
+    ## Install chaincode on peer0.org1 and peer0.org2
+    infoln "Installing chaincode on MULMUNDRA..."
+    installChaincode 1
+    infoln "Install chaincode on APRL_Kawai"
+    installChaincode 4
 ## Invoke the chaincode - this does require that the chaincode have the 'initLedger'
 ## method defined
 if [ "$CC_INIT_FCN" = "NA" ]; then

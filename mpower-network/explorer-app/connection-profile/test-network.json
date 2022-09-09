@@ -1,0 +1,48 @@
+{
+	"name": "test-network",
+	"version": "1.0.0",
+	"client": {
+		"tlsEnable": true,
+		"adminCredential": {
+			"id": "exploreradmin",
+			"password": "exploreradminpw"
+		},
+		"enableAuthentication": true,
+		"organization": "MULMUNDRAMSP",
+		"connection": {
+			"timeout": {
+				"peer": {
+					"endorser": "300"
+				},
+				"orderer": "300"
+			}
+		}
+	},
+	"channels": {
+		"channelone": {
+			"peers": {
+				"peer0.mulmundra.mpower.in": {}
+			}
+		}
+	},
+	"organizations": {
+		"MULMUNDRAMSP": {
+			"mspid": "MULMUNDRAMSP",
+			"adminPrivateKey": {
+				"path": "/tmp/crypto/peerOrganizations/mulmundra.mpower.in/users/Admin@mulmundra.mpower.in/msp/keystore/0d4b09d65d668d997c3f4ccc0a63772859074c5adc62aaabe0545bd3d1abde15_sk"
+			},
+			"peers": ["peer0.mulmundra.mpower.in"],
+			"signedCert": {
+				"path": "/tmp/crypto/peerOrganizations/mulmundra.mpower.in/users/Admin@mulmundra.mpower.in/msp/signcerts/cert.pem"
+			}
+		}
+	},
+	"peers": {
+		"peer0.mulmundra.mpower.in": {
+			"tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/mulmundra.mpower.in/peers/peer0.mulmundra.mpower.in/tls/ca.crt"
+			},
+			"url": "grpcs://peer0.mulmundra.mpower.in:7051"
+		}
+	}
+}

@@ -228,6 +228,154 @@ elif [ "$PROFILE" = "ChannelFour"  ]; then
 	setAnchorPeer 2
 	infoln "Setting anchor peer for MSECTL..."
 	setAnchorPeer 8
+
+
+## Join Fifth channel
+elif [ "$PROFILE" = "ChannelFive"  ]; then
+	## Join all the peers to the channel
+	infoln "Joining APML Tiroda peer to the channel..."
+	joinChannel 5
+	infoln "Joining Maharastra SLDC peer to the channel..."
+	joinChannel 12
+	infoln "Joining MSECTL peer to the channel..."
+	joinChannel 8
+	infoln "Joining AEML Mumbai peer to the channel..."
+	joinChannel 2
+
+	## Set the anchor peers for each org in the channel
+	infoln "Setting anchor peer for APML Tiroda..."
+	setAnchorPeer 5
+	infoln "Setting anchor peer for Maharastra SLDC"
+	setAnchorPeer 12
+	infoln "Setting anchor peer for MSECTL peer"
+	setAnchorPeer 8
+	infoln "Setting anchor peer for AEML Mumbai."
+	setAnchorPeer 2
+
+elif [ "$PROFILE" = "ChannelSix"]; then 
+	## Join all peers to the channel
+	infoln "Joining APML Mundra peer to the channel..."
+	joinChannel 6
+	infoln "Joining PGCIL peer to the channel..."
+	joinChannel 10
+	infoln "Joining West RLDC peer to the channel..."
+	joinChannel 14
+	infoln "Joining Maharastra SLDC peer to the channel..."
+	joinChannel 12
+	infoln "Joining MSECTL peer to the channel..."
+	joinChannel 8
+	infoln "Joining AEML Mumbai peer to the channel..."
+	joinChannel 2
+
+	## Set the anchor peers for each org in the channel
+	infoln "Setting anchor peer for APML Mundra..."
+	setAnchorPeer 5
+	infoln "Setting anchor peer for PGCIL peer to the channel"
+	setAnchorPeer 10
+	infoln "Setting anchor peer for West RLDC peer to the channel"
+	setAnchorPeer 14
+	infoln "Setting anchor peer for Maharastra SLDC"
+	setAnchorPeer 12
+	infoln "Setting anchor peer for MSECTL peer"
+	setAnchorPeer 8
+	infoln "Setting anchor peer for AEML Mumbai."
+	setAnchorPeer 2
+
+elif [ "$PROFILE" = "ChannelSeven"]; then
+	infoln "Joining APRL Kawai peer to the channel..."
+	joinChannel 4
+	infoln "Joining RRVPNL peer to the channel..."
+	joinChannel 9
+	infoln "Joining Rajasthan SLDC peer to the channel..."
+	joinChannel 13
+	infoln "Joining JVVNL Jaipur peer to the channel..."
+	joinChannel 3
+
+
+	## Set the anchor peers for each org in the channel
+	infoln "Setting anchor peer for APRL Kawai..."
+	setAnchorPeer 4
+	infoln "Setting anchor peer for RRVPNL..."
+	setAnchorPeer 9
+	infoln "Setting anchor peer for Rajasthan SLDC..."
+	setAnchorPeer 13
+	infoln "Setting anchor peer for JVVNL Jaipur..."
+	setAnchorPeer 3
+
+## Join Fifth channel
+elif [ "$PROFILE" = "ChannelEight"  ]; then
+	## Join all the peers to the channel
+	infoln "Joining APML Tiroda peer to the channel..."
+	joinChannel 5
+	infoln "Joining Maharastra SLDC peer to the channel..."
+	joinChannel 12
+	infoln "Joining MSECTL peer to the channel..."
+	joinChannel 8
+	infoln "Joining PGCIL peer to the channel..."
+	joinChannel 10
+	infoln "Joining West RLDC peer to the channel..."
+	joinChannel 14
+	infoln "Joining North RLDC peer to the channel..."
+	joinChannel 15
+	infoln "Joining Rajasthan SLDC peer to the channel..."
+	joinChannel 13
+	infoln "Joining RRVPNL peer to the channel..."
+	joinChannel 9
+	infoln "Joining JVVNL Jaipur peer to the channel..."
+	joinChannel 3
+
+	## Set the anchor peers for each org in the channel
+	infoln "Setting anchor peer for APML Tiroda..."
+	setAnchorPeer 5
+	infoln "Setting anchor peer for Maharastra SLDC"
+	setAnchorPeer 12
+	infoln "Setting anchor peer for MSECTL peer"
+	setAnchorPeer 8
+	infoln "Setting anchor peer for PGCIL"
+	setAnchorPeer 10
+	infoln "Setting anchor peer for  West RLDC"
+	setAnchorPeer 14
+	infoln "Setting anchor peer for North RLDC"
+	setAnchorPeer 15
+	infoln "Setting anchor peer for Rajasthan SLDC"
+	setAnchorPeer 13
+	infoln "Setting anchor peer for JVVNL Jaipur"
+	setAnchorPeer 3
+	infoln "Setting anchor peer for RRVPNL"
+	setAnchorPeer 9
+
+elif [ "$PROFILE" = "ChannelEight"  ]; then
+	## Join all the peers to the channel
+	infoln "Joining APML Mundra peer to the channel..."
+	joinChannel 6
+	infoln "Joining PGCIL peer to the channel..."
+	joinChannel 10
+	infoln "Joining West RLDC peer to the channel..."
+	joinChannel 14
+	infoln "Joining North RLDC peer to the channel..."
+	joinChannel 15
+	infoln "Joining Rajasthan SLDC peer to the channel..."
+	joinChannel 13
+	infoln "Joining RRVPNL peer to the channel..."
+	joinChannel 9
+	infoln "Joining JVVNL Jaipur peer to the channel..."
+	joinChannel 3
+
+## Set the anchor peers for each org in the channel
+	infoln "Setting anchor peer for APML Mundra..."
+	setAnchorPeer 6
+	infoln "Setting anchor peer for PGCIL"
+	setAnchorPeer 10
+	infoln "Setting anchor peer for  West RLDC"
+	setAnchorPeer 14
+	infoln "Setting anchor peer for North RLDC"
+	setAnchorPeer 15
+	infoln "Setting anchor peer for Rajasthan SLDC"
+	setAnchorPeer 13
+	infoln "Setting anchor peer for JVVNL Jaipur"
+	setAnchorPeer 3
+	infoln "Setting anchor peer for RRVPNL"
+	setAnchorPeer 9
 else
     errorln "Org${PROFILE} unknown"
 fi
