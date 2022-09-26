@@ -1,5 +1,5 @@
 {
-	"name": "test-network",
+	"name": "docker_mpower_network",
 	"version": "1.0.0",
 	"client": {
 		"tlsEnable": true,
@@ -8,7 +8,7 @@
 			"password": "exploreradminpw"
 		},
 		"enableAuthentication": true,
-		"organization": "MULMUNDRAMSP",
+		"organization": "MULMUNDRA",
 		"connection": {
 			"timeout": {
 				"peer": {
@@ -24,16 +24,27 @@
 				"peer0.mulmundra.mpower.in": {}
 			}
 		}
+
 	},
 	"organizations": {
-		"MULMUNDRAMSP": {
+		"MULMUNDRA": {
 			"mspid": "MULMUNDRAMSP",
 			"adminPrivateKey": {
-				"path": "/tmp/crypto/peerOrganizations/mulmundra.mpower.in/users/Admin@mulmundra.mpower.in/msp/keystore/0d4b09d65d668d997c3f4ccc0a63772859074c5adc62aaabe0545bd3d1abde15_sk"
+				"path": "/tmp/crypto/peerOrganizations/mulmundra.mpower.in/users/Admin@mulmundra.mpower.in/msp/keystore/98c6ee42294ac4f731bdb17fe24c541bae64af9fd99ea2d823b876e884322cbc_sk"
 			},
 			"peers": ["peer0.mulmundra.mpower.in"],
 			"signedCert": {
 				"path": "/tmp/crypto/peerOrganizations/mulmundra.mpower.in/users/Admin@mulmundra.mpower.in/msp/signcerts/cert.pem"
+			}
+		},
+		"AEMLMUMBAI": {
+			"mspid": "AEMLMUMBAIMSP",
+			"adminPrivateKey": {
+				"path": "/tmp/crypto/peerOrganizations/aemlmumbai.mpower.in/users/Admin@aemlmumbai.mpower.in/msp/keystore/c63abd31f9d35617b90689a843199d1346f144ebcc1580804ed57bb6e9295938_sk"
+			},
+			"peers": ["peer0.aemlmumbai.mpower.in"],
+			"signedCert": {
+				"path": "/tmp/crypto/peerOrganizations/aemlmumbai.mpower.in/users/Admin@aemlmumbai.mpower.in/msp/signcerts/cert.pem"
 			}
 		}
 	},
@@ -43,6 +54,12 @@
 				"path": "/tmp/crypto/peerOrganizations/mulmundra.mpower.in/peers/peer0.mulmundra.mpower.in/tls/ca.crt"
 			},
 			"url": "grpcs://peer0.mulmundra.mpower.in:7051"
+		},
+		"peer0.aemlmumbai.mpower.in": {
+			"tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/aemlmumbai.mpower.in/peers/peer0.aemlmumbai.mpower.in/tls/ca.crt"
+			},
+			"url": "grpcs://peer0.aemlmumbai.mpower.in:9051"
 		}
 	}
 }

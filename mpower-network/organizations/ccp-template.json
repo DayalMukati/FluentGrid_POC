@@ -1,8 +1,8 @@
 {
-    "name": "test-network-org${ORG}",
+    "name": "mpower-network-${ORG}",
     "version": "1.0.0",
     "client": {
-        "organization": "Org${ORG}",
+        "organization": "${ORG}",
         "connection": {
             "timeout": {
                 "peer": {
@@ -12,32 +12,32 @@
         }
     },
     "organizations": {
-        "Org${ORG}": {
-            "mspid": "Org${ORG}MSP",
+        "${ORG}": {
+            "mspid": "${ORGMSP}",
             "peers": [
-                "peer0.org${ORG}.example.com"
+                "peer0.${ORG}.mpower.in"
             ],
             "certificateAuthorities": [
-                "ca.org${ORG}.example.com"
+                "ca.${ORG}.mpower.in"
             ]
         }
     },
     "peers": {
-        "peer0.org${ORG}.example.com": {
+        "peer0.${ORG}.mpower.in": {
             "url": "grpcs://localhost:${P0PORT}",
             "tlsCACerts": {
                 "pem": "${PEERPEM}"
             },
             "grpcOptions": {
-                "ssl-target-name-override": "peer0.org${ORG}.example.com",
-                "hostnameOverride": "peer0.org${ORG}.example.com"
+                "ssl-target-name-override": "peer0.${ORG}.mpower.in",
+                "hostnameOverride": "peer0.${ORG}.mpower.in"
             }
         }
     },
     "certificateAuthorities": {
-        "ca.org${ORG}.example.com": {
+        "ca.${ORG}.mpower.in": {
             "url": "https://localhost:${CAPORT}",
-            "caName": "ca-org${ORG}",
+            "caName": "ca-${ORG}",
             "tlsCACerts": {
                 "pem": ["${CAPEM}"]
             },

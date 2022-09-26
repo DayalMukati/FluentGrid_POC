@@ -158,6 +158,7 @@ class PowerContract extends Contract {
         iterator.close();
         return allResults;
     }
+
 }
 
 module.exports = PowerContract;

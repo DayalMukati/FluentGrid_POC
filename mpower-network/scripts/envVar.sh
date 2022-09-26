@@ -192,17 +192,66 @@ parsePeerConnectionParameters() {
   PEERS=""
   while [ "$#" -gt 0 ]; do
     setGlobals $1
-    PEER="peer0.org$1"
+    local USING_ORG=""
+    if [ -z "$OVERRIDE_ORG" ]; then
+      USING_ORG=$1
+    else
+      USING_ORG="${OVERRIDE_ORG}"
+    fi
+    
+    if [ $USING_ORG -eq 1 ]; then
+      PEER="peer0.mulmundra"
+      CA=PEER0_MULMUNDRA_CA
+    elif [ $USING_ORG -eq 2 ]; then
+      PEER="peer0.aemlmumbai"
+      CA=PEER0_AEMLMUMBAI_CA
+    elif [ $USING_ORG -eq 3 ]; then
+      PEER="peer0.jvvnljaipur"
+      CA=PEER0_JVVNL_CA
+    elif [ $USING_ORG -eq 4 ]; then
+      PEER="peer0.aprlkawai"
+      CA=PEER0_APRLKAWAI_CA
+    elif [ $USING_ORG -eq 5 ]; then
+      PEER="peer0.apmltiroda"
+      CA=PEER0_APMLTIRODA_CA
+    elif [ $USING_ORG -eq 6 ]; then
+      PEER="peer0.apmlmundra"
+      CA=PEER0_APMLMUNDRA_CA
+    elif [ $USING_ORG -eq 7 ]; then
+      PEER="peer0.getco"
+      CA=PEER0_GETCO_CA
+    elif [ $USING_ORG -eq 8 ]; then
+      PEER="peer0.msetcl"
+      CA=PEER0_MSETCL_CA
+    elif [ $USING_ORG -eq 9 ]; then
+      PEER="peer0.rrvpnl"
+      CA=PEER0_RRVPNL_CA
+    elif [ $USING_ORG -eq 10 ]; then
+      PEER="peer0.pgcil"
+      CA=PEER0_PGCIL_CA
+    elif [ $USING_ORG -eq 11 ]; then
+      PEER="peer0.gujaratsldc"
+      CA=PEER0_GUJSLDC_CA
+    elif [ $USING_ORG -eq 12 ]; then
+      PEER="peer0.maharastrasldc"
+      CA=PEER0_MAHASLDC_CA
+    elif [ $USING_ORG -eq 13 ]; then
+      PEER="peer0.rajasthansldc"
+      CA=PEER0_RAJSLDC_CA
+    else
+      errorln "ORG Unknown"
+    fi 
+    # PEER="peer0.org$1"
     ## Set peer addresses
     if [ -z "$PEERS" ]
     then
-	PEERS="$PEER"
+	    PEERS="$PEER"
     else
-	PEERS="$PEERS $PEER"
+	    PEERS="$PEERS $PEER"
     fi
     PEER_CONN_PARMS=("${PEER_CONN_PARMS[@]}" --peerAddresses $CORE_PEER_ADDRESS)
     ## Set path to TLS certificate
-    CA=PEER0_ORG$1_CA
+    # CA=PEER0_ORG$1_CA
     TLSINFO=(--tlsRootCertFiles "${!CA}")
     PEER_CONN_PARMS=("${PEER_CONN_PARMS[@]}" "${TLSINFO[@]}")
     # shift by one to get to the next organization

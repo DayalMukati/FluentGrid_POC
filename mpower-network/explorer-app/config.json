@@ -1,6 +1,6 @@
 {
 	"network-configs": {
-		"test-network": {
+		"power-network": {
 			"name": "Power Network",
 			"profile": "./connection-profile/test-network.json"
 		}
