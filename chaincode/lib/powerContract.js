@@ -73,9 +73,7 @@ class PowerContract extends Contract {
 		// === Save asset to state ===
 		console.log(JSON.stringify(data));
 		await ctx.stub.putState(data.id, Buffer.from(JSON.stringify(data)));
-        const result = await ctx.stub.getState(data.id);
-		const savedData = JSON.parse(result.toString());
-		return savedData;
+		return data;
 	}
 	//Update Function
 	async UpdateData(ctx, args) {
