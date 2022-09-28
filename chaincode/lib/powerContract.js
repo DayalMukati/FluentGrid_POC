@@ -73,7 +73,9 @@ class PowerContract extends Contract {
 		// === Save asset to state ===
 		console.log(JSON.stringify(data));
 		await ctx.stub.putState(data.id, Buffer.from(JSON.stringify(data)));
-		return data;
+        const result = await ctx.stub.getState(data.id);
+		const savedData = JSON.parse(result.toString());
+		return savedData;
 	}
 	//Update Function
 	async UpdateData(ctx, args) {
@@ -115,7 +117,24 @@ class PowerContract extends Contract {
 		})
 		return await this.GetQueryResultForQueryString(ctx, JSON.stringify(queryString));
 	}
+    //Get by Id
+    async GetbyId(ctx, id, docType) {
+        let queryString = {};
+        queryString.selector = {};
+        queryString.selector.docType = docType;
+        queryString.selector.id = id;
+        return await this.GetQueryResultForQueryString(ctx, JSON.stringify(queryString)); //shim.success(queryResults);
+    }
 
+    //Get All Records
+    async GetAll(ctx, docType) {
+
+        let queryString = {};
+        queryString.selector = {};
+        queryString.selector.docType = docType;
+        console.log(queryString, "line 127");
+        return await this.GetQueryResultForQueryString(ctx, JSON.stringify(queryString));
+    }
     async GetQueryResultForQueryString(ctx, queryString) {
         let resultsIterator = await ctx.stub.getQueryResult(queryString);
         let results = await this.GetAllResults(resultsIterator, false);

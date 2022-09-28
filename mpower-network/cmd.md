@@ -25,3 +25,12 @@
 
 ## Create ChannelOne
 ./network.sh createChannel -c channelone -pp ChannelOne
+
+
+## Deploy Chaincode
+
+
+./network.sh deployCC -c channelone -ccn chaincode1 -ccl javascript -ccp ../chaincode -cci InitLedger
+
+
+ -ccep "OR('MULMUNDRAMSP.peer','APRLKAWAIMSP.peer')"
