@@ -7,7 +7,7 @@ function createMulmundra() {
   export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/mulmundra.mpower.in/
 
   set -x
-  fabric-ca-client enroll -u https://admin:adminpw@localhost:7054 --caname ca-mulmundra --tls.certfiles "${PWD}/organizations/fabric-ca/mulmundra/tls-cert.pem"
+  fabric-ca-client enroll -u https://adminmul:adminpw@localhost:7054 --caname ca-mulmundra --tls.certfiles "${PWD}/organizations/fabric-ca/mulmundra/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   echo 'NodeOUs:
@@ -87,7 +87,7 @@ function createAemlmumbai() {
   export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/aemlmumbai.mpower.in/
 
   set -x
-  fabric-ca-client enroll -u https://admin:adminpw@localhost:8054 --caname ca-aemlmumbai --tls.certfiles "${PWD}/organizations/fabric-ca/aemlmumbai/tls-cert.pem"
+  fabric-ca-client enroll -u https://adminaeml:adminpw@localhost:8054 --caname ca-aemlmumbai --tls.certfiles "${PWD}/organizations/fabric-ca/aemlmumbai/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   echo 'NodeOUs:
@@ -167,7 +167,7 @@ function createGetco() {
   export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/getco.mpower.in/
 
   set -x
-  fabric-ca-client enroll -u https://admin:adminpw@localhost:13054 --caname ca-getco --tls.certfiles "${PWD}/organizations/fabric-ca/getco/tls-cert.pem"
+  fabric-ca-client enroll -u https://admingetco:adminpw@localhost:13054 --caname ca-getco --tls.certfiles "${PWD}/organizations/fabric-ca/getco/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   echo 'NodeOUs:
@@ -247,7 +247,7 @@ function createMsetcl() {
   export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/msetcl.mpower.in/
 
   set -x
-  fabric-ca-client enroll -u https://admin:adminpw@localhost:14054 --caname ca-msetcl --tls.certfiles "${PWD}/organizations/fabric-ca/msetcl/tls-cert.pem"
+  fabric-ca-client enroll -u https://adminmsetcl:adminpw@localhost:14054 --caname ca-msetcl --tls.certfiles "${PWD}/organizations/fabric-ca/msetcl/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   echo 'NodeOUs:
@@ -327,7 +327,7 @@ function createPgcil() {
   export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/pgcil.mpower.in/
 
   set -x
-  fabric-ca-client enroll -u https://admin:adminpw@localhost:16054 --caname ca-pgcil --tls.certfiles "${PWD}/organizations/fabric-ca/pgcil/tls-cert.pem"
+  fabric-ca-client enroll -u https://adminpgcil:adminpw@localhost:16054 --caname ca-pgcil --tls.certfiles "${PWD}/organizations/fabric-ca/pgcil/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   echo 'NodeOUs:
@@ -407,7 +407,7 @@ function createRrvpnl() {
   export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/rrvpnl.mpower.in/
 
   set -x
-  fabric-ca-client enroll -u https://admin:adminpw@localhost:15054 --caname ca-rrvpnl --tls.certfiles "${PWD}/organizations/fabric-ca/rrvpnl/tls-cert.pem"
+  fabric-ca-client enroll -u https://adminrrvpnl:adminpw@localhost:15054 --caname ca-rrvpnl --tls.certfiles "${PWD}/organizations/fabric-ca/rrvpnl/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   echo 'NodeOUs:
@@ -487,7 +487,7 @@ function createJvvnlJaipur() {
   export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/jvvnljaipur.mpower.in/
 
   set -x
-  fabric-ca-client enroll -u https://admin:adminpw@localhost:6054 --caname ca-jvvnljaipur --tls.certfiles "${PWD}/organizations/fabric-ca/jvvnljaipur/tls-cert.pem"
+  fabric-ca-client enroll -u https://adminjvvnl:adminpw@localhost:6054 --caname ca-jvvnljaipur --tls.certfiles "${PWD}/organizations/fabric-ca/jvvnljaipur/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   echo 'NodeOUs:
@@ -567,7 +567,7 @@ function createAprlKawai() {
   export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/aprlkawai.mpower.in/
 
   set -x
-  fabric-ca-client enroll -u https://admin:adminpw@localhost:10054 --caname ca-aprlkawai --tls.certfiles "${PWD}/organizations/fabric-ca/aprlkawai/tls-cert.pem"
+  fabric-ca-client enroll -u https://adminkawai:adminpw@localhost:10054 --caname ca-aprlkawai --tls.certfiles "${PWD}/organizations/fabric-ca/aprlkawai/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   echo 'NodeOUs:
@@ -647,7 +647,7 @@ function createApmlMundra() {
   export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/apmlmundra.mpower.in/
 
   set -x
-  fabric-ca-client enroll -u https://admin:adminpw@localhost:12054 --caname ca-apmlmundra --tls.certfiles "${PWD}/organizations/fabric-ca/apmlmundra/tls-cert.pem"
+  fabric-ca-client enroll -u https://adminapmlmun:adminpw@localhost:12054 --caname ca-apmlmundra --tls.certfiles "${PWD}/organizations/fabric-ca/apmlmundra/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   echo 'NodeOUs:
@@ -727,7 +727,7 @@ function createApmlTiroda() {
   export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/
 
   set -x
-  fabric-ca-client enroll -u https://admin:adminpw@localhost:11054 --caname ca-apmltiroda --tls.certfiles "${PWD}/organizations/fabric-ca/apmltiroda/tls-cert.pem"
+  fabric-ca-client enroll -u https://admintiroda:adminpw@localhost:11054 --caname ca-apmltiroda --tls.certfiles "${PWD}/organizations/fabric-ca/apmltiroda/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   echo 'NodeOUs:
@@ -800,85 +800,85 @@ function createApmlTiroda() {
   cp "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/msp/config.yaml" "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/users/Admin@apmltiroda.mpower.in/msp/config.yaml"
 }
 
-function createApmlTiroda() {
-  infoln "Enrolling the CA admin"
-  mkdir -p organizations/peerOrganizations/apmltiroda.mpower.in/
+# function createApmlTiroda() {
+#   infoln "Enrolling the CA admin"
+#   mkdir -p organizations/peerOrganizations/apmltiroda.mpower.in/
 
-  export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/
+#   export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/
 
-  set -x
-  fabric-ca-client enroll -u https://admin:adminpw@localhost:11054 --caname ca-apmltiroda --tls.certfiles "${PWD}/organizations/fabric-ca/apmltiroda/tls-cert.pem"
-  { set +x; } 2>/dev/null
+#   set -x
+#   fabric-ca-client enroll -u https://admin:adminpw@localhost:11054 --caname ca-apmltiroda --tls.certfiles "${PWD}/organizations/fabric-ca/apmltiroda/tls-cert.pem"
+#   { set +x; } 2>/dev/null
 
-  echo 'NodeOUs:
-  Enable: true
-  ClientOUIdentifier:
-    Certificate: cacerts/localhost-11054-ca-apmltiroda.pem
-    OrganizationalUnitIdentifier: client
-  PeerOUIdentifier:
-    Certificate: cacerts/localhost-11054-ca-apmltiroda.pem
-    OrganizationalUnitIdentifier: peer
-  AdminOUIdentifier:
-    Certificate: cacerts/localhost-11054-ca-apmltiroda.pem
-    OrganizationalUnitIdentifier: admin
-  OrdererOUIdentifier:
-    Certificate: cacerts/localhost-11054-ca-apmltiroda.pem
-    OrganizationalUnitIdentifier: orderer' > "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/msp/config.yaml"
+#   echo 'NodeOUs:
+#   Enable: true
+#   ClientOUIdentifier:
+#     Certificate: cacerts/localhost-11054-ca-apmltiroda.pem
+#     OrganizationalUnitIdentifier: client
+#   PeerOUIdentifier:
+#     Certificate: cacerts/localhost-11054-ca-apmltiroda.pem
+#     OrganizationalUnitIdentifier: peer
+#   AdminOUIdentifier:
+#     Certificate: cacerts/localhost-11054-ca-apmltiroda.pem
+#     OrganizationalUnitIdentifier: admin
+#   OrdererOUIdentifier:
+#     Certificate: cacerts/localhost-11054-ca-apmltiroda.pem
+#     OrganizationalUnitIdentifier: orderer' > "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/msp/config.yaml"
 
-  infoln "Registering peer0"
-  set -x
-  fabric-ca-client register --caname ca-apmltiroda --id.name peer0 --id.secret peer0pw --id.type peer --tls.certfiles "${PWD}/organizations/fabric-ca/apmltiroda/tls-cert.pem"
-  { set +x; } 2>/dev/null
+#   infoln "Registering peer0"
+#   set -x
+#   fabric-ca-client register --caname ca-apmltiroda --id.name peer0 --id.secret peer0pw --id.type peer --tls.certfiles "${PWD}/organizations/fabric-ca/apmltiroda/tls-cert.pem"
+#   { set +x; } 2>/dev/null
 
-  infoln "Registering user"
-  set -x
-  fabric-ca-client register --caname ca-apmltiroda --id.name user1 --id.secret user1pw --id.type client --tls.certfiles "${PWD}/organizations/fabric-ca/apmltiroda/tls-cert.pem"
-  { set +x; } 2>/dev/null
+#   infoln "Registering user"
+#   set -x
+#   fabric-ca-client register --caname ca-apmltiroda --id.name user1 --id.secret user1pw --id.type client --tls.certfiles "${PWD}/organizations/fabric-ca/apmltiroda/tls-cert.pem"
+#   { set +x; } 2>/dev/null
 
-  infoln "Registering the org admin"
-  set -x
-  fabric-ca-client register --caname ca-apmltiroda --id.name apmltirodaadmin --id.secret apmltirodaadminpw --id.type admin --tls.certfiles "${PWD}/organizations/fabric-ca/apmltiroda/tls-cert.pem"
-  { set +x; } 2>/dev/null
+#   infoln "Registering the org admin"
+#   set -x
+#   fabric-ca-client register --caname ca-apmltiroda --id.name apmltirodaadmin --id.secret apmltirodaadminpw --id.type admin --tls.certfiles "${PWD}/organizations/fabric-ca/apmltiroda/tls-cert.pem"
+#   { set +x; } 2>/dev/null
 
-  infoln "Generating the peer0 msp"
-  set -x
-  fabric-ca-client enroll -u https://peer0:peer0pw@localhost:11054 --caname ca-apmltiroda -M "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/msp" --csr.hosts peer0.apmltiroda.mpower.in --tls.certfiles "${PWD}/organizations/fabric-ca/apmltiroda/tls-cert.pem"
-  { set +x; } 2>/dev/null
+#   infoln "Generating the peer0 msp"
+#   set -x
+#   fabric-ca-client enroll -u https://peer0:peer0pw@localhost:11054 --caname ca-apmltiroda -M "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/msp" --csr.hosts peer0.apmltiroda.mpower.in --tls.certfiles "${PWD}/organizations/fabric-ca/apmltiroda/tls-cert.pem"
+#   { set +x; } 2>/dev/null
 
-  cp "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/msp/config.yaml" "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/msp/config.yaml"
+#   cp "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/msp/config.yaml" "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/msp/config.yaml"
 
-  infoln "Generating the peer0-tls certificates"
-  set -x
-  fabric-ca-client enroll -u https://peer0:peer0pw@localhost:11054 --caname ca-apmltiroda -M "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/tls" --enrollment.profile tls --csr.hosts peer0.apmltiroda.mpower.in --csr.hosts localhost --tls.certfiles "${PWD}/organizations/fabric-ca/apmltiroda/tls-cert.pem"
-  { set +x; } 2>/dev/null
+#   infoln "Generating the peer0-tls certificates"
+#   set -x
+#   fabric-ca-client enroll -u https://peer0:peer0pw@localhost:11054 --caname ca-apmltiroda -M "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/tls" --enrollment.profile tls --csr.hosts peer0.apmltiroda.mpower.in --csr.hosts localhost --tls.certfiles "${PWD}/organizations/fabric-ca/apmltiroda/tls-cert.pem"
+#   { set +x; } 2>/dev/null
 
-  cp "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/tls/tlscacerts/"* "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/tls/ca.crt"
-  cp "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/tls/signcerts/"* "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/tls/server.crt"
-  cp "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/tls/keystore/"* "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/tls/server.key"
+#   cp "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/tls/tlscacerts/"* "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/tls/ca.crt"
+#   cp "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/tls/signcerts/"* "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/tls/server.crt"
+#   cp "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/tls/keystore/"* "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/tls/server.key"
 
-  mkdir -p "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/msp/tlscacerts"
-  cp "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/tls/tlscacerts/"* "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/msp/tlscacerts/ca.crt"
+#   mkdir -p "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/msp/tlscacerts"
+#   cp "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/tls/tlscacerts/"* "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/msp/tlscacerts/ca.crt"
 
-  mkdir -p "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/tlsca"
-  cp "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/tls/tlscacerts/"* "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/tlsca/tlsca.apmltiroda.mpower.in-cert.pem"
+#   mkdir -p "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/tlsca"
+#   cp "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/tls/tlscacerts/"* "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/tlsca/tlsca.apmltiroda.mpower.in-cert.pem"
 
-  mkdir -p "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/ca"
-  cp "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/msp/cacerts/"* "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/ca/ca.apmltiroda.mpower.in-cert.pem"
+#   mkdir -p "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/ca"
+#   cp "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/peers/peer0.apmltiroda.mpower.in/msp/cacerts/"* "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/ca/ca.apmltiroda.mpower.in-cert.pem"
 
-  infoln "Generating the user msp"
-  set -x
-  fabric-ca-client enroll -u https://user1:user1pw@localhost:11054 --caname ca-apmltiroda -M "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/users/User1@apmltiroda.mpower.in/msp" --tls.certfiles "${PWD}/organizations/fabric-ca/apmltiroda/tls-cert.pem"
-  { set +x; } 2>/dev/null
+#   infoln "Generating the user msp"
+#   set -x
+#   fabric-ca-client enroll -u https://user1:user1pw@localhost:11054 --caname ca-apmltiroda -M "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/users/User1@apmltiroda.mpower.in/msp" --tls.certfiles "${PWD}/organizations/fabric-ca/apmltiroda/tls-cert.pem"
+#   { set +x; } 2>/dev/null
 
-  cp "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/msp/config.yaml" "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/users/User1@apmltiroda.mpower.in/msp/config.yaml"
+#   cp "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/msp/config.yaml" "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/users/User1@apmltiroda.mpower.in/msp/config.yaml"
 
-  infoln "Generating the org admin msp"
-  set -x
-  fabric-ca-client enroll -u https://apmltirodaadmin:apmltirodaadminpw@localhost:11054 --caname ca-apmltiroda -M "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/users/Admin@apmltiroda.mpower.in/msp" --tls.certfiles "${PWD}/organizations/fabric-ca/apmltiroda/tls-cert.pem"
-  { set +x; } 2>/dev/null
+#   infoln "Generating the org admin msp"
+#   set -x
+#   fabric-ca-client enroll -u https://apmltirodaadmin:apmltirodaadminpw@localhost:11054 --caname ca-apmltiroda -M "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/users/Admin@apmltiroda.mpower.in/msp" --tls.certfiles "${PWD}/organizations/fabric-ca/apmltiroda/tls-cert.pem"
+#   { set +x; } 2>/dev/null
 
-  cp "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/msp/config.yaml" "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/users/Admin@apmltiroda.mpower.in/msp/config.yaml"
-}
+#   cp "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/msp/config.yaml" "${PWD}/organizations/peerOrganizations/apmltiroda.mpower.in/users/Admin@apmltiroda.mpower.in/msp/config.yaml"
+# }
 
 function createGujaratSldc() {
   infoln "Enrolling the CA admin"
@@ -887,7 +887,7 @@ function createGujaratSldc() {
   export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/gujaratsldc.mpower.in/
 
   set -x
-  fabric-ca-client enroll -u https://admin:adminpw@localhost:17054 --caname ca-gujaratsldc --tls.certfiles "${PWD}/organizations/fabric-ca/gujaratsldc/tls-cert.pem"
+  fabric-ca-client enroll -u https://admingujsldc:adminpw@localhost:17054 --caname ca-gujaratsldc --tls.certfiles "${PWD}/organizations/fabric-ca/gujaratsldc/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   echo 'NodeOUs:
@@ -967,7 +967,7 @@ function createMaharastraSldc() {
   export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/maharastrasldc.mpower.in/
 
   set -x
-  fabric-ca-client enroll -u https://admin:adminpw@localhost:18054 --caname ca-maharastrasldc --tls.certfiles "${PWD}/organizations/fabric-ca/maharastrasldc/tls-cert.pem"
+  fabric-ca-client enroll -u https://adminmahasldc:adminpw@localhost:18054 --caname ca-maharastrasldc --tls.certfiles "${PWD}/organizations/fabric-ca/maharastrasldc/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   echo 'NodeOUs:
@@ -1047,7 +1047,7 @@ function createRajasthanSldc() {
   export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/rajasthansldc.mpower.in/
 
   set -x
-  fabric-ca-client enroll -u https://admin:adminpw@localhost:19054 --caname ca-rajasthansldc --tls.certfiles "${PWD}/organizations/fabric-ca/rajasthansldc/tls-cert.pem"
+  fabric-ca-client enroll -u https://adminrajsldc:adminpw@localhost:19054 --caname ca-rajasthansldc --tls.certfiles "${PWD}/organizations/fabric-ca/rajasthansldc/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   echo 'NodeOUs:
@@ -1127,7 +1127,7 @@ function createWesternRldc() {
   export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/westernrldc.mpower.in/
 
   set -x
-  fabric-ca-client enroll -u https://admin:adminpw@localhost:20054 --caname ca-westernrldc --tls.certfiles "${PWD}/organizations/fabric-ca/westernrldc/tls-cert.pem"
+  fabric-ca-client enroll -u https://adminwestrldc:adminpw@localhost:20054 --caname ca-westernrldc --tls.certfiles "${PWD}/organizations/fabric-ca/westernrldc/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   echo 'NodeOUs:
@@ -1207,7 +1207,7 @@ function createNorthernRldc() {
   export FABRIC_CA_CLIENT_HOME=${PWD}/organizations/peerOrganizations/northernrldc.mpower.in/
 
   set -x
-  fabric-ca-client enroll -u https://admin:adminpw@localhost:21054 --caname ca-northernrldc --tls.certfiles "${PWD}/organizations/fabric-ca/northernrldc/tls-cert.pem"
+  fabric-ca-client enroll -u https://adminnorthrldc:adminpw@localhost:21054 --caname ca-northernrldc --tls.certfiles "${PWD}/organizations/fabric-ca/northernrldc/tls-cert.pem"
   { set +x; } 2>/dev/null
 
   echo 'NodeOUs:

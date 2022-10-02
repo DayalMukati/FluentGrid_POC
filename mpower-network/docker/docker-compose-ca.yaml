@@ -21,7 +21,7 @@ services:
       - FABRIC_CA_SERVER_PORT=7054
     ports:
       - "7054:7054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b adminmul:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/mulmundra:/etc/hyperledger/fabric-ca-server
     container_name: ca_mulmundra
@@ -39,7 +39,7 @@ services:
       - FABRIC_CA_SERVER_PORT=8054
     ports:
       - "8054:8054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b adminaeml:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/aemlmumbai:/etc/hyperledger/fabric-ca-server
     container_name: ca_aemlmumbai
@@ -57,7 +57,7 @@ services:
       - FABRIC_CA_SERVER_PORT=6054
     ports:
       - "6054:6054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b adminjvvnl:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/jvvnljaipur:/etc/hyperledger/fabric-ca-server
     container_name: ca_jvvnljaipur
@@ -75,7 +75,7 @@ services:
       - FABRIC_CA_SERVER_PORT=10054
     ports:
       - "10054:10054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b adminkawai:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/aprlkawai:/etc/hyperledger/fabric-ca-server
     container_name: ca_aprlkawai
@@ -93,7 +93,7 @@ services:
       - FABRIC_CA_SERVER_PORT=11054
     ports:
       - "11054:11054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b admintiroda:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/apmltiroda:/etc/hyperledger/fabric-ca-server
     container_name: ca_apmltiroda
@@ -111,7 +111,7 @@ services:
       - FABRIC_CA_SERVER_PORT=12054
     ports:
       - "12054:12054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b adminapmlmun:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/apmlmundra:/etc/hyperledger/fabric-ca-server
     container_name: ca_apmlmundra
@@ -129,7 +129,7 @@ services:
       - FABRIC_CA_SERVER_PORT=13054
     ports:
       - "13054:13054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b admingetco:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/getco:/etc/hyperledger/fabric-ca-server
     container_name: ca_getco
@@ -147,7 +147,7 @@ services:
       - FABRIC_CA_SERVER_PORT=14054
     ports:
       - "14054:14054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b adminmsetcl:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/msetcl:/etc/hyperledger/fabric-ca-server
     container_name: ca_msetcl
@@ -165,7 +165,7 @@ services:
       - FABRIC_CA_SERVER_PORT=15054
     ports:
       - "15054:15054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b adminrrvpnl:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/rrvpnl:/etc/hyperledger/fabric-ca-server
     container_name: ca_rrvpnl
@@ -183,7 +183,7 @@ services:
       - FABRIC_CA_SERVER_PORT=16054
     ports:
       - "16054:16054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b adminpgcil:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/pgcil:/etc/hyperledger/fabric-ca-server
     container_name: ca_pgcil
@@ -201,7 +201,7 @@ services:
       - FABRIC_CA_SERVER_PORT=17054
     ports:
       - "17054:17054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b admingujsldc:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/gujaratsldc:/etc/hyperledger/fabric-ca-server
     container_name: ca_gujaratsldc
@@ -219,7 +219,7 @@ services:
       - FABRIC_CA_SERVER_PORT=18054
     ports:
       - "18054:18054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b adminmahasldc:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/maharastrasldc:/etc/hyperledger/fabric-ca-server
     container_name: ca_maharastrasldc
@@ -237,7 +237,7 @@ services:
       - FABRIC_CA_SERVER_PORT=19054
     ports:
       - "19054:19054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b adminrajsldc:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/rajasthansldc:/etc/hyperledger/fabric-ca-server
     container_name: ca_rajasthansldc
@@ -255,7 +255,7 @@ services:
       - FABRIC_CA_SERVER_PORT=20054
     ports:
       - "20054:20054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b adminwestrldc:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/westernrldc:/etc/hyperledger/fabric-ca-server
     container_name: ca_westernrldc
@@ -273,7 +273,7 @@ services:
       - FABRIC_CA_SERVER_PORT=21054
     ports:
       - "21054:21054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b adminnorthrldc:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/northernrldc:/etc/hyperledger/fabric-ca-server
     container_name: ca_northernrldc
