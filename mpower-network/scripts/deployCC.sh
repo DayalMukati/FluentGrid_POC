@@ -333,8 +333,45 @@ elif ["$CHANNEL_NAME" = "channeltwo"]; then
     ## Install chaincode on peer0.org1 and peer0.org2
     infoln "Installing chaincode on MULMUNDRA..."
     installChaincode 1
-    infoln "Install chaincode on APRL_Kawai"
-    installChaincode 4
+    infoln "Install chaincode on Getco"
+    installChaincode 7
+    infoln "Install chaincode on Gujarat SLDC"
+    installChaincode 11
+    infoln "Install chaincode on PGCIL"
+    installChaincode 10
+    infoln "Install chaincode on WRLDC"
+    installChaincode 14
+    infoln "Install chaincode on Maharashtra_SLDC"
+    installChaincode 12
+    infoln "Install chaincode on MSECTL"
+    installChaincode 8
+     infoln "Install chaincode on APML_TIRODA"
+    installChaincode 5
+    ## query whether the chaincode is installed
+    queryInstalled 1
+
+    ## approve the definition for org1
+    approveForMyOrg 1
+    approveForMyOrg 7
+    approveForMyOrg 11
+    approveForMyOrg 10
+    approveForMyOrg 14
+    approveForMyOrg 12
+    approveForMyOrg 8
+    approveForMyOrg 5
+
+    ## check whether the chaincode definition is ready to be committed
+    ## expect org1 to have approved and org2 not to
+    # checkCommitReadiness 1 "\"Org1MSP\": true" "\"Org2MSP\": false"
+
+    ## now that we know for sure both orgs have approved, commit the definition
+    commitChaincodeDefinition 1 7 10 8 5
+
+    ## query on both orgs to see that the definition committed successfully
+    queryCommitted 1
+    queryCommitted 5
+    chaincodeInvokeInit 1 7 10 8 5
+    
 ## Invoke the chaincode - this does require that the chaincode have the 'initLedger'
 ## method defined
   fi

@@ -70,6 +70,7 @@ class PowerContract extends Contract {
     //CreateData
 	async CreateData(ctx, args) {
 		const data = JSON.parse(args);
+        data.LatestTransaction = ctx.stub.getTxID();
 		// === Save asset to state ===
 		console.log(JSON.stringify(data));
 		await ctx.stub.putState(data.id, Buffer.from(JSON.stringify(data)));
@@ -78,6 +79,7 @@ class PowerContract extends Contract {
 	//Update Function
 	async UpdateData(ctx, args) {
 		const data = JSON.parse(args);
+        data.LatestTransaction = ctx.stub.getTxID();
 		console.log(data, "chaincode data")
 		await ctx.stub.putState(data.id, Buffer.from(JSON.stringify(data)));
 		const result = await ctx.stub.getState(data.id);
