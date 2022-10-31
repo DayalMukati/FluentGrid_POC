@@ -290,19 +290,18 @@ packageChaincode
     installChaincode 1
     infoln "Install chaincode on APRL_Kawai"
     installChaincode 4
-    infoln "Install chaincode on GETCO"
-    installChaincode 7
     infoln "Install chaincode on RRVPNL peer"
     installChaincode 9
-    infoln "Install chaincode on PGCIL.."
-    installChaincode 10
-    infoln "Install chaincode on Gujarat_SLDC."
-    installChaincode 11
     infoln "Install chaincode on Rajasthan_SLDC.."
     installChaincode 13
+    infoln "Install chaincode on PGCIL.."
+    installChaincode 10
     infoln "Install chaincode on WRLDC."
     installChaincode 14
-
+    infoln "Install chaincode on Gujarat_SLDC."
+    installChaincode 11
+    infoln "Install chaincode on GETCO"
+    installChaincode 7
 
     ## query whether the chaincode is installed
     queryInstalled 1
@@ -310,70 +309,361 @@ packageChaincode
     ## approve the definition for org1
     approveForMyOrg 1
     approveForMyOrg 4
-    approveForMyOrg 7
     approveForMyOrg 9
-    approveForMyOrg 10
-    approveForMyOrg 11
     approveForMyOrg 13
+    approveForMyOrg 10
     approveForMyOrg 14
+    approveForMyOrg 11
+    approveForMyOrg 7
 
     ## check whether the chaincode definition is ready to be committed
     ## expect org1 to have approved and org2 not to
-    # checkCommitReadiness 1 "\"Org1MSP\": true" "\"Org2MSP\": false"
+    # checkCommitReadliness 1 "\"Org1MSP\": true" "\"Org2MSP\": false"
 
     ## now that we know for sure both orgs have approved, commit the definition
-    commitChaincodeDefinition 1 4 7 9 10
+    commitChaincodeDefinition 1 4 9 13 10 14 11 7
 
     ## query on both orgs to see that the definition committed successfully
     queryCommitted 1
     queryCommitted 4
-    chaincodeInvokeInit 1 4 7 9 10
+    chaincodeInvokeInit 1 4 9 13 10 14 11 7
   
 elif ["$CHANNEL_NAME" = "channeltwo"]; then
     ## Install chaincode on peer0.org1 and peer0.org2
     infoln "Installing chaincode on MULMUNDRA..."
     installChaincode 1
-    infoln "Install chaincode on Getco"
-    installChaincode 7
-    infoln "Install chaincode on Gujarat SLDC"
-    installChaincode 11
+    infoln "Install chaincode on APML_TIRODA"
+    installChaincode 5
+    infoln "Install chaincode on MSECTL"
+    installChaincode 8
+    infoln "Install chaincode on Maharashtra_SLDC"
+    installChaincode 12
     infoln "Install chaincode on PGCIL"
     installChaincode 10
     infoln "Install chaincode on WRLDC"
     installChaincode 14
-    infoln "Install chaincode on Maharashtra_SLDC"
-    installChaincode 12
-    infoln "Install chaincode on MSECTL"
-    installChaincode 8
-     infoln "Install chaincode on APML_TIRODA"
-    installChaincode 5
+    infoln "Install chaincode on Gujarat SLDC"
+    installChaincode 11
+    infoln "Install chaincode on Getco"
+    installChaincode 7
+     
     ## query whether the chaincode is installed
     queryInstalled 1
 
     ## approve the definition for org1
     approveForMyOrg 1
-    approveForMyOrg 7
-    approveForMyOrg 11
+    approveForMyOrg 5
+    approveForMyOrg 8
+    approveForMyOrg 12
     approveForMyOrg 10
     approveForMyOrg 14
-    approveForMyOrg 12
-    approveForMyOrg 8
-    approveForMyOrg 5
+    approveForMyOrg 11
+    approveForMyOrg 7
 
     ## check whether the chaincode definition is ready to be committed
     ## expect org1 to have approved and org2 not to
     # checkCommitReadiness 1 "\"Org1MSP\": true" "\"Org2MSP\": false"
 
     ## now that we know for sure both orgs have approved, commit the definition
-    commitChaincodeDefinition 1 7 10 8 5
+    commitChaincodeDefinition 1 5 8 12 10 14 11 7
 
     ## query on both orgs to see that the definition committed successfully
     queryCommitted 1
     queryCommitted 5
-    chaincodeInvokeInit 1 7 10 8 5
+    chaincodeInvokeInit 1 5 8 12 10 14 11 7
     
-## Invoke the chaincode - this does require that the chaincode have the 'initLedger'
-## method defined
-  fi
+    ## Invoke the chaincode - this does require that the chaincode have the 'initLedger'
+    ## method defined
 
+elif ["$CHANNEL_NAME" = "channelthree"]; then
+    ## Install chaincode on peer0.org1 and peer0.org2
+    infoln "Installing chaincode on MULMUNDRA..."
+    installChaincode 1
+    infoln "Install chaincode on APML Mundra"
+    installChaincode 6
+    infoln "Install chaincode on Gujarat SLDC"
+    installChaincode 11
+    infoln "Install chaincode on GETCO"
+    installChaincode 7
+    
+    ## query whether the chaincode is installed
+    queryInstalled 1
+
+    ## approve the definition for org1
+    approveForMyOrg 1
+    approveForMyOrg 6
+    approveForMyOrg 11
+    approveForMyOrg 7
+  
+
+    ## check whether the chaincode definition is ready to be committed
+    ## expect org1 to have approved and org2 not to
+    # checkCommitReadiness 1 "\"Org1MSP\": true" "\"Org2MSP\": false"
+
+    ## now that we know for sure both orgs have approved, commit the definition
+    commitChaincodeDefinition 1 6 11 7
+
+    ## query on both orgs to see that the definition committed successfully
+    queryCommitted 1
+    queryCommitted 6
+    chaincodeInvokeInit 1 6 11 7
+    
+    ## Invoke the chaincode - this does require that the chaincode have the 'initLedger'
+    ## method defined
+elif ["$CHANNEL_NAME" = "channelfour"]; then
+    ## Install chaincode on peer0.org1 and peer0.org2
+    infoln "Installing chaincode on APRL Kawai..."
+    installChaincode 4
+    infoln "Install chaincode on RRVPNL peer..."
+    installChaincode 9
+    infoln "Install chaincode on Rajasthan SLDC..."
+    installChaincode 13
+    infoln "Install chaincode on Maharastra SDLC peer..."
+    installChaincode 12
+    infoln "Install chaincode on PGCIL peer..."
+    installChaincode 10
+    infoln "Install chaincode on West RLDC peer..."
+    installChaincode 14
+    infoln "Install chaincode on North RLDC peer..."
+    installChaincode 15
+    infoln "Install chaincode on MSECTL peerr..."
+    installChaincode 8
+    infoln "Install chaincode on AEML Mumbai peer..."
+    installChaincode 2
+    ## query whether the chaincode is installed
+    queryInstalled 4
+
+    ## approve the definition for org1
+    approveForMyOrg 4
+    approveForMyOrg 9
+    approveForMyOrg 13
+    approveForMyOrg 12
+    approveForMyOrg 10
+    approveForMyOrg 14
+    approveForMyOrg 15
+    approveForMyOrg 8
+    approveForMyOrg 2
+
+    ## check whether the chaincode definition is ready to be committed
+    ## expect org1 to have approved and org2 not to
+    # checkCommitReadiness 1 "\"Org1MSP\": true" "\"Org2MSP\": false"
+
+    ## now that we know for sure both orgs have approved, commit the definition
+    commitChaincodeDefinition 4 9 13 12 10 14 15 8 2
+
+    ## query on both orgs to see that the definition committed successfully
+    queryCommitted 4
+    queryCommitted 9
+    chaincodeInvokeInit 4 9 13 12 10 15 8 2
+    
+    ## Invoke the chaincode - this does require that the chaincode have the 'initLedger'
+    ## method defined
+
+elif ["$CHANNEL_NAME" = "channelfive"]; then
+    ## Install chaincode on peer0.org1 and peer0.org2
+    infoln "Installing chaincode on APML Tiroda peer..."
+    installChaincode 5
+    infoln "Install chaincode on Maharastra SLDC peer..."
+    installChaincode 12
+    infoln "Install chaincode on MSECTL peer..."
+    installChaincode 8
+    infoln "Install chaincode on AEML Mumbai"
+    installChaincode 2
+    
+    ## query whether the chaincode is installed
+    queryInstalled 5
+
+    ## approve the definition for org1
+    approveForMyOrg 5
+    approveForMyOrg 12
+    approveForMyOrg 8
+    approveForMyOrg 2
+    
+
+    ## check whether the chaincode definition is ready to be committed
+    ## expect org1 to have approved and org2 not to
+    # checkCommitReadiness 1 "\"Org1MSP\": true" "\"Org2MSP\": false"
+
+    ## now that we know for sure both orgs have approved, commit the definition
+    commitChaincodeDefinition 5 12 8 2
+
+    ## query on both orgs to see that the definition committed successfully
+    queryCommitted 5
+    queryCommitted 12
+    chaincodeInvokeInit 5 12 8 2
+    
+    ## Invoke the chaincode - this does require that the chaincode have the 'initLedger'
+    ## method defined
+
+elif ["$CHANNEL_NAME" = "channelsix"]; then
+    ## Install chaincode on peer0.org1 and peer0.org2
+    infoln "Installing chaincode on APML Mundra peer..."
+    installChaincode 6
+    infoln "Install chaincode on PGCIL peer"
+    installChaincode 10
+    infoln "Install chaincode on West RLDC"
+    installChaincode 14
+    infoln "Install chaincode on Maharastra SLDC"
+    installChaincode 12
+    infoln "Install chaincode on MSECTL peer"
+    installChaincode 8
+    infoln "Install chaincode on AEML Mumbai"
+    installChaincode 2
+    
+    ## query whether the chaincode is installed
+    queryInstalled 6
+
+    ## approve the definition for org1
+    approveForMyOrg 6
+    approveForMyOrg 10
+    approveForMyOrg 14
+    approveForMyOrg 12
+    approveForMyOrg 8
+    approveForMyOrg 2
+    
+    ## check whether the chaincode definition is ready to be committed
+    ## expect org1 to have approved and org2 not to
+    # checkCommitReadiness 1 "\"Org1MSP\": true" "\"Org2MSP\": false"
+
+    ## now that we know for sure both orgs have approved, commit the definition
+    commitChaincodeDefinition 6 10 14 12 8 2
+
+    ## query on both orgs to see that the definition committed successfully
+    queryCommitted 6
+    queryCommitted 14
+    chaincodeInvokeInit 6 10 14 12 8 2
+    
+    ## Invoke the chaincode - this does require that the chaincode have the 'initLedger'
+    ## method defined
+
+elif ["$CHANNEL_NAME" = "channelseven"]; then
+    ## Install chaincode on peer0.org1 and peer0.org2
+    infoln "Installing chaincode on APRL Kawai..."
+    installChaincode 4
+    infoln "Install chaincode on RRVPNL peer..."
+    installChaincode 9
+    infoln "Install chaincode on Rajasthan SLDC peer..."
+    installChaincode 13
+    infoln "Install chaincode on JVVNL Jaipur peer..."
+    installChaincode 3
+   
+    ## query whether the chaincode is installed
+    queryInstalled 4
+
+    ## approve the definition for org1
+    approveForMyOrg 4
+    approveForMyOrg 9
+    approveForMyOrg 13
+    approveForMyOrg 3
+    
+    ## check whether the chaincode definition is ready to be committed
+    ## expect org1 to have approved and org2 not to
+    # checkCommitReadiness 1 "\"Org1MSP\": true" "\"Org2MSP\": false"
+
+    ## now that we know for sure both orgs have approved, commit the definition
+    commitChaincodeDefinition 4 9 13 3
+
+    ## query on both orgs to see that the definition committed successfully
+    queryCommitted 4
+    queryCommitted 9
+    chaincodeInvokeInit 4 9 13 3
+    
+    ## Invoke the chaincode - this does require that the chaincode have the 'initLedger'
+    ## method defined
+
+elif ["$CHANNEL_NAME" = "channeleight"]; then
+    ## Install chaincode on peer0.org1 and peer0.org2..."
+    infoln "Install chaincode on APML Tiroda peer..."
+    installChaincode 5
+    infoln "Install chaincode on Maharastra SLDC peer..."
+    installChaincode 12
+    infoln "Install chaincode on MSECTL peer..."
+    installChaincode 8
+    infoln "Install chaincode on PGCIL peer"
+    installChaincode 10
+    infoln "Install chaincode on West RLDC peer..."
+    installChaincode 14
+    infoln "Install chaincode on North RLDC peer..."
+    installChaincode 15
+    infoln "Install chaincode on RAJASTHAN SLDC peer..."
+    installChaincode 13
+    infoln "Install chaincode on RRVPNL peer..."
+    installChaincode 9
+    infoln "Install chaincode on JVVNL Jaipur peer"
+    installChaincode 3
+    ## query whether the chaincode is installed
+    queryInstalled 1
+
+    ## approve the definition for org1
+    approveForMyOrg 5
+    approveForMyOrg 12
+    approveForMyOrg 8
+    approveForMyOrg 10
+    approveForMyOrg 14
+    approveForMyOrg 15
+    approveForMyOrg 13
+    approveForMyOrg 9
+    approveForMyOrg 3
+
+    ## check whether the chaincode definition is ready to be committed
+    ## expect org1 to have approved and org2 not to
+    # checkCommitReadiness 1 "\"Org1MSP\": true" "\"Org2MSP\": false"
+
+    ## now that we know for sure both orgs have approved, commit the definition
+    commitChaincodeDefinition 5 12 8 10 14 15 13 3
+
+    ## query on both orgs to see that the definition committed successfully
+    queryCommitted 5
+    queryCommitted 12
+    chaincodeInvokeInit 5 12 8 10 14 15 13 3
+    
+    ## Invoke the chaincode - this does require that the chaincode have the 'initLedger'
+    ## method defined
+
+elif ["$CHANNEL_NAME" = "channelnine"]; then
+    ## Install chaincode on peer0.org1 and peer0.org2
+    infoln "Installing chaincode on APML Tiroda peer..."
+    installChaincode 5
+    infoln "Install chaincode on MSECTL peer..."
+    installChaincode 8
+    infoln "Install chaincode on Maharastra SDLC peer..."
+    installChaincode 12
+    infoln "Install chaincode on PGCIL"
+    installChaincode 10
+    infoln "Install chaincode on West RLDC"
+    installChaincode 14
+    infoln "Install chaincode on Gujarat SLDC"
+    installChaincode 11
+    infoln "Install chaincode on GETCO"
+    installChaincode 7
+     infoln "Install chaincode on MULMUNDRA"
+    installChaincode 1
+    ## query whether the chaincode is installed
+    queryInstalled 5
+
+    ## approve the definition for org1
+    approveForMyOrg 5
+    approveForMyOrg 8
+    approveForMyOrg 12
+    approveForMyOrg 10
+    approveForMyOrg 14
+    approveForMyOrg 11
+    approveForMyOrg 7
+    approveForMyOrg 1
+
+    ## check whether the chaincode definition is ready to be committed
+    ## expect org1 to have approved and org2 not to
+    # checkCommitReadiness 1 "\"Org1MSP\": true" "\"Org2MSP\": false"
+
+    ## now that we know for sure both orgs have approved, commit the definition
+    commitChaincodeDefinition 5 8 12 10 14 11 7 1
+
+    ## query on both orgs to see that the definition committed successfully
+    queryCommitted 5
+    queryCommitted 8
+    chaincodeInvokeInit 5 8 12 10 14 11 7 1
+    
+    ## Invoke the chaincode - this does require that the chaincode have the 'initLedger'
+    ## method defined
+  fi
 exit 0
