@@ -25,6 +25,18 @@
 
 ## Create ChannelOne
 ./network.sh createChannel -c channelone -pp ChannelOne
+./network.sh createChannel -c channeltwo -pp ChannelTwo
+./network.sh createChannel -c channelthree -pp ChannelThree
+./network.sh createChannel -c channelfour -pp ChannelFour
+./network.sh createChannel -c channelfive -pp ChannelFive
+./network.sh createChannel -c channelsix -pp ChannelSix
+./network.sh createChannel -c channelseven -pp ChannelSeven
+./network.sh createChannel -c channeleight -pp ChannelEight
+./network.sh createChannel -c channelone -pp ChannelNine
+
+
+
+
 
 ## Deploy Chaincode
-./network.sh deployCC -c channelone -ccn chaincode1 -ccl javascript -ccp ../chaincode -cci InitLedger -ccep "OR('MULMUNDRAMSP.peer','APRLKAWAIMSP.peer')"
+./network.sh deployCC -c channelone -ccn iotchaincode -ccl javascript -ccp /home/yuvaraj/IDS/fluentgrid/FluentGrid_POC/chaincode -cci InitLedger -ccep "OR('MULMUNDRAMSP.peer','APRLKAWAIMSP.peer')"
