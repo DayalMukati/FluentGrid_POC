@@ -1,6 +1,8 @@
 "use strict";
 
-const { Contract } = require("fabric-contract-api");
+const {
+    Contract
+} = require("fabric-contract-api");
 
 class PowerContract extends Contract {
     //Init function
@@ -126,41 +128,80 @@ class PowerContract extends Contract {
         return allResults;
     }
 
-    // async createOrgwallet(ctx, args) {
-    //     let data = JSON.parse(args);
-    //     const organizationName = data.organizationName;
-    //     const walletId = data.id;
-    //     let wallet = {
-    //         docType: "Wallet",
-    //         id: walletId,
-    //         orgType: data.orgType,
-    //         organizationName: data.organizationName,
-    //         source: data.source,
-    //         transactionDate: data.transactionDate,
-    //         transactionNumber: data.transactionNumber,
-    //         transactionType: data.transactionType,
-    //         transactionAmount: data.transactionAmount,
-    //         totalBalance: data.totalBalance,
-    //     };
-    //     const queryString = {
-    //         selector: {
-    //             organizationName,
-    //             docType,
-    //         },
-    //     };
-    //     const duplicateWallet = this.GetQueryResultForQueryString(
-    //         ctx,
-    //         JSON.stringify(queryString)
-    //     );
-    //     if (!duplicateWallet) {
-    //         data.LatestTransaction = ctx.stub.getTxID();
-    //         // === Save asset to state ===
-    //         console.log(JSON.stringify(data));
-    //         await ctx.stub.putState(data.id, Buffer.from(JSON.stringify(data)));
-    //         return data;
-    //     } else {
-    //         throw new Error(`${organizationName} already exist`); 
-    //     }
-    // }
+    async billSettel(ctx, args) {
+        let data = JSON.parse(args);
+        console.log(data)
+        data.docType = "billsettel"
+        // const docType = "dailybill";
+        // const query = {
+        //     AccountNumber: data.AccountNumber,
+        //     BillingDate: data.date
+        // }
+        // const queryData = JSON.parse(query);
+        // //Get Bill Units
+        // const queryBill = {
+        //     selector: {
+        //         ...queryData,
+        //         docType
+        //     },
+        // };
+        // console.log("queryString", queryBill)
+        // const billData = await this.Find(
+        //     ctx,
+        //     JSON.stringify(query),
+        //     "dailybill"
+        // );
+        // console.log("billdata", billData)
+        const billedUnits = data.billedUnits;
+
+        //Calculations 
+
+        const nmaAmount = (billedUnits * data.nmaCharge) / 100
+        const ctuAmount = (billedUnits * data.ctuCharge) / 100
+        const stuAmount = (billedUnits * data.stuCharge) / 100
+
+        const gencoAmount = data.TotalCharge - (nmaAmount + ctuAmount + stuAmount)
+        data.nmaAmount = nmaAmount;
+        data.ctuAmount = ctuAmount;
+        data.stuAmount = stuAmount;
+        data.gencoAmount = gencoAmount;
+        console.log("calcul1", billedUnits)
+        console.log("calcul", nmaAmount, ctuAmount, stuAmount, gencoAmount)
+        if (nmaAmount) {
+            console.log("inside nma", data.nmaWallet)
+            const walletId = data.nmaWallet;
+            await this.updateWallet(ctx, walletId, nmaAmount)
+        }
+        if (ctuAmount) {
+            const walletId = data.ctuWallet;
+            await this.updateWallet(ctx, walletId, ctuAmount)
+        }
+        if (stuAmount) {
+            const walletId = data.stuWallet;
+            await this.updateWallet(ctx, walletId, stuAmount)
+        }
+        if (gencoAmount) {
+            const walletId = data.gencoWallet;
+            await this.updateWallet(ctx, walletId, gencoAmount)
+        }
+        await ctx.stub.putState(data.id, Buffer.from(JSON.stringify(data)));
+        return data;
+
+    }
+
+    async updateWallet(ctx, walletId, amount) {
+        console.log("WalletId", walletId)
+        const walletAsBytes = await ctx.stub.getState(walletId); // get the car from chaincode state
+        if (!walletAsBytes || walletAsBytes.length === 0) {
+            throw new Error(`${carNumber} does not exist`);
+        }
+        const wallet = JSON.parse(walletAsBytes.toString());
+        wallet.TotalBalance = parseFloat(wallet.TotalBalance) + parseFloat(amount);
+        const transaction = ctx.stub.getTxID();
+        wallet.Transactions.push(transaction);
+        wallet.LatestTransaction = transaction;
+
+        await ctx.stub.putState(walletId, Buffer.from(JSON.stringify(wallet)));
+    }
 }
 module.exports = PowerContract;
